@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     private float horizontal;
     private float vertical;
-
+    
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizontal * speed, vertical * speed);
