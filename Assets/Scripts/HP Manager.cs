@@ -21,7 +21,7 @@ public class HPManager : MonoBehaviour
         {
             if (isenemy)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
             else
             {

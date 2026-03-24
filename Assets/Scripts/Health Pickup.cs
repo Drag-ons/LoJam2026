@@ -8,7 +8,7 @@ public class HealthPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<HPManager>().Damage(heal);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
