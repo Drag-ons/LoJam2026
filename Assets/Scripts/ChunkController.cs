@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChunkController : MonoBehaviour
@@ -8,6 +9,7 @@ public class ChunkController : MonoBehaviour
     {
         mapController = FindAnyObjectByType<MapController>();
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

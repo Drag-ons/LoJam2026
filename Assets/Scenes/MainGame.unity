@@ -290,7 +290,7 @@ MonoBehaviour:
   activeChunks: []
   prefabChunks:
   - {fileID: 2655337474716028365, guid: 59c121a8bf528b2428f6cd3630fda751, type: 3}
-  despawnRange: 30
+  despawnRange: 35
 --- !u!4 &275988246
 Transform:
   m_ObjectHideFlags: 0

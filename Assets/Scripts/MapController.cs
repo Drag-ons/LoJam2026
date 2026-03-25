@@ -8,15 +8,28 @@ public class MapController : MonoBehaviour
     public List<GameObject> activeChunks;
     public List<GameObject> prefabChunks;
     public float despawnRange;
+    public float cooldownTimeDuration;
 
+    private float cooldownTime;
 
     void Start()
     {
+        cooldownTime = cooldownTimeDuration;
         SpawnNewTerrainChunk(new Vector3(0, 0, 1));
     }
 
     void Update()
     {
+        cooldownTime -= Time.deltaTime;
+        if (cooldownTime <= 0f)
+        {
+            cooldownTime = cooldownTimeDuration;
+        }
+        else
+        {
+            return;
+        }
+
         DespawnChunkCheck();
         SpawnChunkCheck();
     }
@@ -90,6 +103,6 @@ public class MapController : MonoBehaviour
 
     private void SpawnNewTerrainChunk(Vector3 newTerrainChunkPos)
     {
-        activeChunks.Add(Instantiate(prefabChunks[Random.Range(0, prefabChunks.Count)], newTerrainChunkPos, Quaternion.identity));
+        activeChunks.Add(Instantiate(prefabChunks[Random.Range(0, prefabChunks.Count)], newTerrainChunkPos, Quaternion.identity, gameObject.transform));
     }
 }
