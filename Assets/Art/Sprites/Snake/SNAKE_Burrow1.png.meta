@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e42a7ccf113ae0d4a8af1b2ba69a8c70
+guid: b365dca08311d814382d250620e0ba51
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -352460012313521172
-    second: IRA_Idle2_0
+      213: -7483529794788055365
+    second: SNAKE_Burrow1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IRA_Idle2_0
+      name: SNAKE_Burrow1_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 0
-        width: 45
-        height: 62
+        x: 22
+        y: 4
+        width: 20
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce3d5887c7fcb1bf0800000000000000
-      internalID: -352460012313521172
+      spriteID: bb62b931d49252890800000000000000
+      internalID: -7483529794788055365
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IRA_Idle2_0: -352460012313521172
+      SNAKE_Burrow1_0: -7483529794788055365
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
