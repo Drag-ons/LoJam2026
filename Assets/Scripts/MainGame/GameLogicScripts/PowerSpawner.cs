@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class PowerSpawner : MonoBehaviour
 {
     public float minimumSpawnRange;
     public float maximumSpawnRange;
@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnCooldownTime;
     public float spawnRateCooldownTime;
     public float spawnRateModifier;
-    public List<GameObject> enemies;
+    public List<GameObject> powers;
 
     private GameObject player;
     private bool canSpawn = true;
@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
         {
             canSpawn = false;
 
-            SpawnRandomEnemy();
+            SpawnRandomPower();
 
             StartCoroutine(SpawnCooldownRoutine());
         }
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         canSpawnRate = true;
     }
 
-    public void SpawnRandomEnemy()
+    public void SpawnRandomPower()
     {
         Vector3 spawnLocation = new Vector3(
             Random.Range(player.transform.position.x - minimumSpawnRange, player.transform.position.x + maximumSpawnRange), 
@@ -63,11 +63,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, spawnLocation) > spawnDistance)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Count)], spawnLocation, Quaternion.identity, gameObject.transform);
+            Instantiate(powers[Random.Range(0, powers.Count)], spawnLocation, Quaternion.identity, gameObject.transform);
         }
         else
         {
-            SpawnRandomEnemy();
+            SpawnRandomPower();
         }
     }
 

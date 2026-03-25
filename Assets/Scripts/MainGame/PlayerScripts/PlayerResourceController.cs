@@ -31,6 +31,12 @@ public class PlayerResourceController : MonoBehaviour
         {
             TakeDamage(collision.GetComponent<EnemyMovement>().enemyStats.damage);
         }
+
+        if (collision.CompareTag("Health") && sanity < playerStats.maxSanity)
+        {
+            TakeDamage(-10);
+            Destroy(collision.gameObject);
+        }
     }
 
     void Update()
