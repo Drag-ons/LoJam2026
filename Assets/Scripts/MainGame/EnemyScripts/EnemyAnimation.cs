@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
@@ -11,6 +12,13 @@ public class EnemyAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyMovement = GetComponent<EnemyMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        StartCoroutine(WaitForAnimationAndMove());
+    }
+
+    private IEnumerator WaitForAnimationAndMove()
+    {
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && !animator.IsInTransition(0));
+        enemyMovement.canMove = true;
     }
 
     void Update()
