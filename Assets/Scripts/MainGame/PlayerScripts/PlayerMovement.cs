@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public float xVelocity;
     public float yVelocity;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rigidBody;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
             lastXVelocity = xVelocity;
         }
 
-        rb.linearVelocity = new Vector2(xVelocity * speed, yVelocity * speed);
+        rigidBody.linearVelocity = new Vector2(xVelocity * speed, yVelocity * speed);
     }
 
     public void Move(InputAction.CallbackContext context)

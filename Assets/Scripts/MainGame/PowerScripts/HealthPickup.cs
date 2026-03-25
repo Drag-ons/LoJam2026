@@ -7,7 +7,7 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<HPManager>().Damage(heal);
+            other.GetComponent<PlayerResourceController>().TakeDamage(heal);
             Destroy(gameObject);
         }
     }
