@@ -345,7 +345,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
-    BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    BindingMode: 2
+    PositionDamping: {x: 0, y: 0, z: 0}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -739,7 +739,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1586,12 +1586,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2068199341}
-  - component: {fileID: 2068199340}
   - component: {fileID: 2068199339}
-  - component: {fileID: 2068199342}
-  - component: {fileID: 2068199343}
   - component: {fileID: 2068199344}
+  - component: {fileID: 2068199347}
+  - component: {fileID: 2068199340}
+  - component: {fileID: 2068199342}
   - component: {fileID: 2068199345}
+  - component: {fileID: 2068199343}
+  - component: {fileID: 2068199346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1611,8 +1613,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8d948edd2b73f4cb82d51546efbe2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 10
-  rb: {fileID: 2068199342}
+  speed: 5
+  isMoving: 0
+  lastXVelocity: 0
+  xVelocity: 0
+  yVelocity: 0
 --- !u!212 &2068199340
 SpriteRenderer:
   serializedVersion: 2
@@ -1662,8 +1667,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 2073b1c688ca9a54bae214254209a88b, type: 3}
-  m_Color: {r: 0.51023495, g: 0.6202092, b: 0.9245283, a: 1}
+  m_Sprite: {fileID: 1786495456795765600, guid: fb7dee182b83ef54bab0aef5e430a638, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1886,7 +1891,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.45, y: 0.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1894,6 +1899,40 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2068199346
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068199338}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b17910d165201904088685144267ad89, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2068199347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068199338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552d6086ae34bd84ca7629d37b0597ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
 --- !u!1 &2141066944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,11 +2188,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1185492668}
+  - {fileID: 500980867}
   - {fileID: 2068199341}
   - {fileID: 1291687421}
   - {fileID: 644109699}
   - {fileID: 421620922}
   - {fileID: 3711883182176916285}
   - {fileID: 869780179321607379}
-  - {fileID: 500980867}
   - {fileID: 921480840}
