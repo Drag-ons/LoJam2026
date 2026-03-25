@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,28 +11,30 @@ public class MapController : MonoBehaviour
     public float despawnRange;
     public float cooldownTimeDuration;
 
-    private float cooldownTime;
+    private bool canCheck = true;
 
     void Start()
     {
-        cooldownTime = cooldownTimeDuration;
         SpawnNewTerrainChunk(new Vector3(0, 0, 1));
     }
 
     void Update()
     {
-        cooldownTime -= Time.deltaTime;
-        if (cooldownTime <= 0f)
+        if (canCheck)
         {
-            cooldownTime = cooldownTimeDuration;
-        }
-        else
-        {
-            return;
-        }
+            canCheck = false;
 
-        DespawnChunkCheck();
-        SpawnChunkCheck();
+            DespawnChunkCheck();
+            SpawnChunkCheck();
+
+            StartCoroutine(CooldownRoutine());
+        }
+    }
+
+    IEnumerator CooldownRoutine()
+    {
+        yield return new WaitForSeconds(cooldownTimeDuration);
+        canCheck = true;
     }
 
     private void DespawnChunkCheck()

@@ -290,7 +290,9 @@ MonoBehaviour:
   activeChunks: []
   prefabChunks:
   - {fileID: 2655337474716028365, guid: 59c121a8bf528b2428f6cd3630fda751, type: 3}
+  - {fileID: 2655337474716028365, guid: 1893195a4924a4247ae9bd5d262c8255, type: 3}
   despawnRange: 35
+  cooldownTimeDuration: 1
 --- !u!4 &275988246
 Transform:
   m_ObjectHideFlags: 0
@@ -2240,8 +2242,8 @@ SceneRoots:
   - {fileID: 1185492668}
   - {fileID: 500980867}
   - {fileID: 2068199341}
-  - {fileID: 1291687421}
   - {fileID: 644109699}
+  - {fileID: 1291687421}
   - {fileID: 421620922}
   - {fileID: 3711883182176916285}
   - {fileID: 869780179321607379}
