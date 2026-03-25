@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    public GameObject player;
     public GameObject currentChunk;
     public List<GameObject> activeChunks;
     public List<GameObject> prefabChunks;
     public float despawnRange;
-    public float cooldownTimeDuration;
+    public float cooldownTime;
 
+    private GameObject player;
     private bool canCheck = true;
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         SpawnNewTerrainChunk(new Vector3(0, 0, 1));
+        SpawnChunkCheck();
     }
 
     void Update()
@@ -33,7 +35,7 @@ public class MapController : MonoBehaviour
 
     IEnumerator CooldownRoutine()
     {
-        yield return new WaitForSeconds(cooldownTimeDuration);
+        yield return new WaitForSeconds(cooldownTime);
         canCheck = true;
     }
 
