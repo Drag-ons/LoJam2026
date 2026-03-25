@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDistance;
     public float spawnCooldownTime;
     public float spawnRateCooldownTime;
-    public float spawnRateModifyer;
+    public float spawnRateModifier;
     public List<GameObject> enemies;
 
     private GameObject player;
@@ -73,6 +73,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void UpSpawnRate()
     {
-        spawnCooldownTime = spawnCooldownTime * spawnRateModifyer;
+        spawnCooldownTime = spawnCooldownTime * spawnRateModifier;
     }
 }

@@ -9,7 +9,7 @@ public class PowerSpawner : MonoBehaviour
     public float spawnDistance;
     public float spawnCooldownTime;
     public float spawnRateCooldownTime;
-    public float spawnRateModifyer;
+    public float spawnRateModifier;
     public List<GameObject> powers;
 
     private GameObject player;
