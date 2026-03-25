@@ -73,6 +73,6 @@ public class PowerSpawner : MonoBehaviour
 
     public void UpSpawnRate()
     {
-        spawnCooldownTime = spawnCooldownTime * spawnRateModifyer;
+        spawnCooldownTime = spawnCooldownTime * spawnRateModifier;
     }
 }
