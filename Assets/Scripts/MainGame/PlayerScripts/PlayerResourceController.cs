@@ -14,7 +14,7 @@ public class PlayerResourceController : MonoBehaviour
         stamina = playerStats.maxStamina;
     }
 
-    public void TakeDamage(float dmg)
+    public void RemoveSanity(float dmg)
     {
         sanity = Mathf.Clamp(sanity - dmg, 0, playerStats.maxSanity);
 
@@ -25,17 +25,21 @@ public class PlayerResourceController : MonoBehaviour
         }
     }
 
+    public void AddSanity(float dmg)
+    {
+        sanity = Mathf.Clamp(sanity + dmg, 0, playerStats.maxSanity);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            TakeDamage(collision.GetComponent<EnemyMovement>().enemyStats.damage);
+            RemoveSanity(collision.GetComponent<EnemyMovement>().enemyStats.damage);
         }
 
-        if (collision.CompareTag("Health") && sanity < playerStats.maxSanity)
+        if (collision.gameObject.TryGetComponent(out ICollectable collectable))
         {
-            TakeDamage(-10);
-            Destroy(collision.gameObject);
+            collectable.Collect(this);
         }
     }
 
