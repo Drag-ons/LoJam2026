@@ -179,6 +179,8 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 385478519eb7f0546b044ac2d75c2c01, type: 2}
   lastXVelocity: 0
   distanceGoal: 0.5
+  canMove: 0
+  deathvfx: {fileID: 1810188744360878190, guid: 5879bd46371b3574f95a00242d9ff790, type: 3}
 --- !u!114 &4976931847441270994
 MonoBehaviour:
   m_ObjectHideFlags: 0
