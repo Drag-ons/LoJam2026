@@ -755,6 +755,8 @@ MonoBehaviour:
     maximumSpawnRangeX: 5
     minimumSpawnRangeY: 0
     maximumSpawnRangeY: 3
+  spawnedEnemies: []
+  canSpawn: 1
 --- !u!4 &921480840
 Transform:
   m_ObjectHideFlags: 0
@@ -916,6 +918,7 @@ GameObject:
   - component: {fileID: 1185492666}
   - component: {fileID: 1185492669}
   - component: {fileID: 1185492670}
+  - component: {fileID: 1185492671}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1074,6 +1077,22 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &1185492671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185492665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e94a3285a21a545835c099d318c7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FilterControl
+  filter: {fileID: 2100000, guid: 594a536c0f368474fb379763945882c1, type: 2}
+  nukelength: 2
+  spawner: {fileID: 921480839}
+  player: {fileID: 0}
 --- !u!1 &1291687416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1998,19 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/XInputControllerWindows/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1185492671}
+        m_TargetAssemblyTypeName: FilterControl, Assembly-CSharp
+        m_MethodName: Nuke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e,/XInputControllerWindows/buttonNorth]'
   - m_PersistentCalls:

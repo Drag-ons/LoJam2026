@@ -10,11 +10,13 @@ public class EnemySpawner : MonoBehaviour
     public float cullRange;
     public float cullRangeCooldownTime;
     public List<EnemySpawnData> enemies;
-    
+
 
     private GameObject player;
-    private List<GameObject> spawnedEnemies = new();
-    private bool canSpawn = true;
+    public List<GameObject> spawnedEnemies = new();
+    //changed to public for nuke
+    public bool canSpawn = true;
+    //changed to public for nuke
     private bool canSpawnRate = true;
     private bool canCull = true;
 
@@ -73,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
         Vector2 differenceVector = playerPosition - new Vector2(randomX, randomY);
         float absoluteXDistance = Mathf.Abs(differenceVector.x);
         float absoluteYDistance = Mathf.Abs(differenceVector.y);
-        
+
         if (Random.value < 0.5f)
         {
             randomX -= absoluteXDistance * 2;
