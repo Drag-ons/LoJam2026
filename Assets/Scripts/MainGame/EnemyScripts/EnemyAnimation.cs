@@ -1,28 +1,30 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
 {
-    Animator animator;
+    GameObject player;
     EnemyMovement enemyMovement;
     SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        player = GameObject.FindWithTag("Player");
         enemyMovement = GetComponent<EnemyMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        StartCoroutine(WaitForAnimationAndMove());
+        spriteRenderer.flipX = player.transform.InverseTransformPoint(gameObject.transform.position).x < 0;
     }
 
-    private IEnumerator WaitForAnimationAndMove()
+    public void OnSpawnEnd()
     {
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && !animator.IsInTransition(0));
         enemyMovement.canMove = true;
+        enemyMovement.canDamage = true;
     }
 
     void Update()
     {
-        spriteRenderer.flipX = enemyMovement.lastXVelocity > 0;
+        if (enemyMovement.canMove)
+        {
+            spriteRenderer.flipX = enemyMovement.lastXVelocity > 0;
+        }
     }
 }

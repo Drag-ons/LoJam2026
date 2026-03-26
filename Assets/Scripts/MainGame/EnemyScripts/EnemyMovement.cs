@@ -1,26 +1,29 @@
-using System.Collections;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IEnemy
 {
     public EnemyStats enemyStats;
     public float lastXVelocity;
-    public float distanceGoal;
     public bool canMove = false;
+    public bool canDamage = false;
+    public float distanceFromPlayer;
+    public GameObject player;
+    public Rigidbody2D rigidBody;
+    public Deathaim deathvfx;
+    public IEnemyMovement enemyMovementInterface;
+    public EnemySpawner enemySpawner;
 
     private Camera playerCamera;
-    private float distanceFromPlayer;
-    private Transform player;
-    private Rigidbody2D rigidBody;
     private bool spottedByPlayer = false;
-    public Deathaim deathvfx;
 
-    void Start()
+    private void Start()
     {
         playerCamera = Camera.main;
         rigidBody = GetComponent<Rigidbody2D>();
-        player = FindAnyObjectByType<PlayerMovement>().transform;
+        player = GameObject.FindWithTag("Player");
+        enemyMovementInterface = gameObject.GetComponent<IEnemyMovement>();
         deathvfx = GameObject.FindWithTag("Deathvfx").GetComponent<Deathaim>();
+        enemySpawner = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
     void Update()
@@ -33,24 +36,26 @@ public class EnemyMovement : MonoBehaviour
         else if (spottedByPlayer)
         {
             deathvfx.deathevent(this.transform.position);
+            enemySpawner.RemoveEnemyFromSpawnedList(gameObject);
             Destroy(gameObject);
         }
     }
 
     void FixedUpdate()
     {
-        if (canMove)
-        {
-            distanceFromPlayer = Vector2.Distance(player.position, transform.position);
-            if (distanceFromPlayer > distanceGoal)
-            {
-                rigidBody.linearVelocity = (player.position - transform.position).normalized * Random.Range(enemyStats.minimumSpeed, enemyStats.maximumSpeed);
-            }
+        enemyMovementInterface.Move();
 
-            if (rigidBody.linearVelocity.x != 0)
-            {
-                lastXVelocity = rigidBody.linearVelocity.x;
-            }
+        if (rigidBody.linearVelocity.x != 0)
+        {
+            lastXVelocity = rigidBody.linearVelocity.x;
+        }
+    }
+
+    public void DamagePlayer(PlayerResourceController playerResourceController)
+    {
+        if (canDamage)
+        {
+            playerResourceController.RemoveSanity(enemyStats.damage);
         }
     }
 }

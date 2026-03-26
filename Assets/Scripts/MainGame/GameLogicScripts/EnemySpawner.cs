@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float minimumSpawnRange;
-    public float maximumSpawnRange;
-    public float spawnDistance;
     public float spawnCooldownTime;
     public float spawnRateCooldownTime;
     public float spawnRateModifier;
-    public List<GameObject> enemies;
+    public float cullRange;
+    public float cullRangeCooldownTime;
+    public List<EnemySpawnData> enemies;
+    
 
     private GameObject player;
+    private List<GameObject> spawnedEnemies = new();
     private bool canSpawn = true;
     private bool canSpawnRate = true;
+    private bool canCull = true;
+
+    [System.Serializable]
+    public class EnemySpawnData
+    {
+        public GameObject prefab;
+        public float minimumSpawnRangeX;
+        public float maximumSpawnRangeX;
+        public float minimumSpawnRangeY;
+        public float maximumSpawnRangeY;
+    }
 
     void Start()
     {
@@ -27,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
         {
             canSpawn = false;
 
-            SpawnRandomEnemy();
+            Spawn(enemies[Random.Range(0, enemies.Count)]);
 
             StartCoroutine(SpawnCooldownRoutine());
         }
@@ -40,6 +52,39 @@ public class EnemySpawner : MonoBehaviour
 
             StartCoroutine(SpawnRateCooldownRoutine());
         }
+
+        if (canCull)
+        {
+            canCull = false;
+
+            CullEnemiesCheck();
+
+            StartCoroutine(CullCooldownRoutine());
+        }
+    }
+
+    private void Spawn(EnemySpawnData spawnData)
+    {
+        Vector2 playerPosition = player.gameObject.transform.position;
+
+        float randomX = Random.Range(playerPosition.x + spawnData.minimumSpawnRangeX, playerPosition.x + spawnData.maximumSpawnRangeX);
+        float randomY = Random.Range(playerPosition.y + spawnData.minimumSpawnRangeY, playerPosition.y + spawnData.maximumSpawnRangeY);
+
+        Vector2 differenceVector = playerPosition - new Vector2(randomX, randomY);
+        float absoluteXDistance = Mathf.Abs(differenceVector.x);
+        float absoluteYDistance = Mathf.Abs(differenceVector.y);
+        
+        if (Random.value < 0.5f)
+        {
+            randomX -= absoluteXDistance * 2;
+        }
+
+        if (Random.value < 0.5f)
+        {
+            randomY -= absoluteYDistance * 2;
+        }
+
+        spawnedEnemies.Add(Instantiate(spawnData.prefab, new Vector2(randomX, randomY), Quaternion.identity, gameObject.transform));
     }
 
     IEnumerator SpawnCooldownRoutine()
@@ -54,21 +99,33 @@ public class EnemySpawner : MonoBehaviour
         canSpawnRate = true;
     }
 
-    public void SpawnRandomEnemy()
+    IEnumerator CullCooldownRoutine()
     {
-        Vector3 spawnLocation = new Vector3(
-            Random.Range(player.transform.position.x - minimumSpawnRange, player.transform.position.x + maximumSpawnRange), 
-            Random.Range(player.transform.position.y - minimumSpawnRange, player.transform.position.y + maximumSpawnRange), 
-            0);
+        yield return new WaitForSeconds(cullRangeCooldownTime);
+        canCull = true;
+    }
 
-        if (Vector3.Distance(player.transform.position, spawnLocation) > spawnDistance)
+    private void CullEnemiesCheck()
+    {
+        List<GameObject> enemiesToDespawn = new List<GameObject>();
+        foreach (GameObject enemy in spawnedEnemies)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Count)], spawnLocation, Quaternion.identity, gameObject.transform);
+            if (Vector2.Distance(player.transform.position, enemy.transform.position) > cullRange)
+            {
+                enemiesToDespawn.Add(enemy);
+            }
         }
-        else
+
+        foreach (GameObject enemy in enemiesToDespawn)
         {
-            SpawnRandomEnemy();
+            spawnedEnemies.Remove(enemy);
+            Destroy(enemy);
         }
+    }
+
+    public void RemoveEnemyFromSpawnedList(GameObject enemy)
+    {
+        spawnedEnemies.Remove(enemy);
     }
 
     public void UpSpawnRate()
