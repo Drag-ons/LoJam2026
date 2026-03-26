@@ -15,7 +15,16 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool("Moving", playerMovement.isMoving);
+        animator.SetBool("Nuking", playerMovement.isNuking);
+        animator.SetBool("Dashing", playerMovement.isDashing);
+        if (playerMovement.isDashing)
+        {
+            animator.SetBool("Moving", false);
+        }
+        else
+        {
+            animator.SetBool("Moving", playerMovement.isMoving);
+        }
         spriteRenderer.flipX = playerMovement.lastXVelocity < 0;
     }
 }

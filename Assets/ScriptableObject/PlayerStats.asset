@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c61dc9041cccd44aac88b5bdb1ae28, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  godMode: 0
   maxSanity: 100
   maxStamina: 100
+  staminaRecoveryRate: 0.05
+  maxAbilityPower: 30
+  movementSpeed: 5
+  dashingPower: 10
+  dashingTime: 0.2
+  dashingCooldown: 0.5
+  dashingCost: 10
+  nukeOrbCost: 1
