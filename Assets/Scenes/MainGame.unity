@@ -2057,7 +2057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fc8b48f464d6342bb2b3906a613936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HPManager
-  godMode: 1
+  godMode: 0
   sanity: 100
   stamina: 100
   playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}
