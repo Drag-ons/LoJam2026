@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerResourceController : MonoBehaviour
 {
+    public bool godMode;
     public float sanity;
     public float stamina;
     public PlayerStats playerStats;
@@ -32,9 +33,9 @@ public class PlayerResourceController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.gameObject.TryGetComponent(out IEnemy enemy) && !godMode)
         {
-            RemoveSanity(collision.GetComponent<EnemyMovement>().enemyStats.damage);
+            enemy.DamagePlayer(this);
         }
 
         if (collision.gameObject.TryGetComponent(out ICollectable collectable))

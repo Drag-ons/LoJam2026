@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8745481988431417948}
   m_Layer: 0
   m_Name: Health
-  m_TagString: Health
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1488636465405776611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1770465, y: -1.0701866, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01743415c90feb8479caa1d0130e8780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickupController
+  healingPower: 10

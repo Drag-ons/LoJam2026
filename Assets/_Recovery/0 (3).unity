@@ -613,15 +613,13 @@ MonoBehaviour:
   spawnRateModifier: 0.9
   enemies:
   - prefab: {fileID: 3022575421561785183, guid: 47f8f3d2ef85f1e4c847e23d27aa9f1d, type: 3}
-    minimumSpawnRangeX: 0.5
-    maximumSpawnRangeX: 5
-    minimumSpawnRangeY: 0.5
-    maximumSpawnRangeY: 3
+    spawnRangeX: 5
+    spawnRangeY: 3
+    spawnDistance: 0.5
   - prefab: {fileID: 5978028102599777083, guid: f785fe8a056088943bf9b94e7163e6f2, type: 3}
-    minimumSpawnRangeX: 4.8
-    maximumSpawnRangeX: 5
-    minimumSpawnRangeY: 0
-    maximumSpawnRangeY: 3
+    spawnRangeX: 5
+    spawnRangeY: 3
+    spawnDistance: 1
 --- !u!4 &921480840
 Transform:
   m_ObjectHideFlags: 0

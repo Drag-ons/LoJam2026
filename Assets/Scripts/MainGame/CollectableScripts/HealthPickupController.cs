@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class HealthPickupController : MonoBehaviour, ICollectable
 {
+    public float healingPower;
+
     public void Collect(PlayerResourceController playerResourceController)
     {
-        playerResourceController.AddSanity(10);
+        playerResourceController.AddSanity(healingPower);
         Destroy(gameObject);
     }
 }
