@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 4ddc73c9ed7a869498a07abd4a909f3b
+guid: de9dbebba93795c4f84c0bb4d0195c85
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1752260431047995478
-    second: IRA_TunnelVision1_0
+      213: -293988582268781880
+    second: OBSTACLE_Tree2_0
+  - first:
+      213: 3962619381527003624
+    second: OBSTACLE_Tree2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IRA_TunnelVision1_0
+      name: OBSTACLE_Tree2_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 0
-        width: 46
-        height: 64
+        x: 16
+        y: 4
+        width: 69
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 650b6920497415810800000000000000
-      internalID: 1752260431047995478
+      spriteID: 8ca39d921fa8bebf0800000000000000
+      internalID: -293988582268781880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OBSTACLE_Tree2_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 85
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1cef7255d0ef630800000000000000
+      internalID: 3962619381527003624
       vertices: []
       indices: 
       edges: []
@@ -148,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IRA_TunnelVision1_0: 1752260431047995478
+      OBSTACLE_Tree2_0: -293988582268781880
+      OBSTACLE_Tree2_1: 3962619381527003624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
