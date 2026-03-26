@@ -1,23 +1,54 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerResourceController : MonoBehaviour
 {
-    public bool godMode;
     public float sanity;
+    public bool canBeDamaged = true;
     public float stamina;
+    public float abilityPower;
     public PlayerStats playerStats;
-
+    public Slider sanityBarSlider;
+    public Slider staminaBarSlider;
+    public Slider ability1BarSlider;
+    public Slider ability2BarSlider;
+    public Slider ability3BarSlider;
     public GameObject deathmenu;
+
+    private float orbUiIncrements;
+    private float abilityIncrements;
 
     void Start()
     {
         sanity = playerStats.maxSanity;
         stamina = playerStats.maxStamina;
+
+        sanityBarSlider.maxValue = playerStats.maxSanity;
+        sanityBarSlider.value = sanity;
+
+        staminaBarSlider.maxValue = playerStats.maxStamina;
+        staminaBarSlider.value = stamina;
+
+        abilityIncrements = playerStats.maxAbilityPower / 3;
+        orbUiIncrements = 1 / abilityIncrements;
+    }
+
+    void Update()
+    {
+        stamina = Mathf.Clamp(stamina + playerStats.staminaRecoveryRate, 0, playerStats.maxStamina);
+        staminaBarSlider.value = stamina;
+    }
+
+    public void AddSanity(float health)
+    {
+        sanity = Mathf.Clamp(sanity + health, 0, playerStats.maxSanity);
+        sanityBarSlider.value = sanity;
     }
 
     public void RemoveSanity(float dmg)
     {
         sanity = Mathf.Clamp(sanity - dmg, 0, playerStats.maxSanity);
+        sanityBarSlider.value = sanity;
 
         if (sanity <= 0)
         {
@@ -26,14 +57,64 @@ public class PlayerResourceController : MonoBehaviour
         }
     }
 
-    public void AddSanity(float dmg)
+    public void RemoveStamina(float drain)
     {
-        sanity = Mathf.Clamp(sanity + dmg, 0, playerStats.maxSanity);
+        stamina = Mathf.Clamp(stamina - drain, 0, playerStats.maxStamina);
+    }
+
+    public void AddAbilityResource(float ability)
+    {
+        abilityPower = Mathf.Clamp(abilityPower + ability, 0, playerStats.maxAbilityPower);
+        UpdateOrbUi();
+    }
+
+    public void RemoveAbilityOrbs(int abilityOrbCount)
+    {
+        abilityPower = Mathf.Clamp(abilityPower - abilityOrbCount * abilityIncrements, 0, playerStats.maxAbilityPower);
+
+        ability1BarSlider.value = 0;
+        ability2BarSlider.value = 0;
+        ability3BarSlider.value = 0;
+
+        UpdateOrbUi();
+    }
+
+    private void UpdateOrbUi()
+    {
+        if (abilityPower >= abilityIncrements)
+        {
+            ability1BarSlider.value = abilityIncrements * orbUiIncrements;
+            if (abilityPower >= (abilityIncrements * 2))
+            {
+                ability2BarSlider.value = abilityIncrements * orbUiIncrements;
+                if (abilityPower >= (abilityIncrements * 3))
+                {
+                    ability3BarSlider.value = abilityIncrements * orbUiIncrements;
+                }
+                else
+                {
+                    ability3BarSlider.value = (abilityPower - (abilityIncrements * 2)) * orbUiIncrements;
+                }
+            }
+            else
+            {
+                ability2BarSlider.value = (abilityPower - abilityIncrements) * orbUiIncrements;
+            }
+        }
+        else
+        {
+            ability1BarSlider.value = abilityPower * orbUiIncrements;
+        }
+    }
+
+    public bool CanUseAbility(int orbCost)
+    {
+        return abilityPower >= abilityIncrements * orbCost;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IEnemy enemy) && !godMode)
+        if (collision.gameObject.TryGetComponent(out IEnemy enemy) && canBeDamaged && !playerStats.godMode)
         {
             enemy.DamagePlayer(this);
         }
@@ -42,10 +123,5 @@ public class PlayerResourceController : MonoBehaviour
         {
             collectable.Collect(this);
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

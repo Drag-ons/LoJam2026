@@ -1,28 +1,28 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class FilterControl : MonoBehaviour
 {
     public Material filter;
-    private bool active;
+    public bool active;
     public float nukelength;
+    public float nukeDowtime;
     public EnemySpawner spawner;
     public GameObject player;
-    public void Nuke(InputAction.CallbackContext context)
+
+    public void Nuke()
     {
-        ;
         active = true;
         StartCoroutine(NukeDuration());
-
-
     }
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         filter.SetFloat("_Intensity", 0);
         filter.SetFloat("_Active", 5);
     }
+
     void FixedUpdate()
     {
         if (active == true)
@@ -50,20 +50,18 @@ public class FilterControl : MonoBehaviour
             }
         }
     }
+
     IEnumerator NukeDuration()
     {
         while (active == true)
         {
             yield return new WaitForSeconds(nukelength / 2);
-            foreach (GameObject enemy in spawner.spawnedEnemies)
-            {
-                enemy.transform.position = player.transform.position + new Vector3(100, 100, 100);
-            }
+            spawner.NukeAllEnemies();
             yield return new WaitForSeconds(nukelength / 2);
-            spawner.canSpawn = true;
-
             active = false;
+
+            yield return new WaitForSeconds(nukeDowtime);
+            spawner.canSpawn = true;
         }
     }
-
 }

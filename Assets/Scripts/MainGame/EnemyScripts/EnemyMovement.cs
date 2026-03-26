@@ -15,12 +15,14 @@ public class EnemyMovement : MonoBehaviour, IEnemy
 
     private Camera playerCamera;
     private bool spottedByPlayer = false;
+    private PlayerResourceController resourceController;
 
     private void Start()
     {
         playerCamera = Camera.main;
         rigidBody = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
+        resourceController = player.GetComponent<PlayerResourceController>();
         enemyMovementInterface = gameObject.GetComponent<IEnemyMovement>();
         deathvfx = GameObject.FindWithTag("Deathvfx").GetComponent<Deathaim>();
         enemySpawner = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawner>();
@@ -35,6 +37,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         }
         else if (spottedByPlayer)
         {
+            resourceController.AddAbilityResource(enemyStats.abilityGain);
             deathvfx.deathevent(this.transform.position);
             enemySpawner.RemoveEnemyFromSpawnedList(gameObject);
             Destroy(gameObject);

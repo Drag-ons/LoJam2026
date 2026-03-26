@@ -134,4 +134,19 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnCooldownTime = spawnCooldownTime * spawnRateModifier;
     }
+
+    public void NukeAllEnemies()
+    {
+        List<GameObject> enemiesToDespawn = new List<GameObject>();
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            enemiesToDespawn.Add(enemy);
+        }
+
+        foreach (GameObject enemy in enemiesToDespawn)
+        {
+            spawnedEnemies.Remove(enemy);
+            Destroy(enemy);
+        }
+    }
 }
