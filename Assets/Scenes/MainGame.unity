@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 921480839}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,6 +742,8 @@ MonoBehaviour:
   spawnCooldownTime: 1
   spawnRateCooldownTime: 1
   spawnRateModifier: 0.9
+  cullRange: 50
+  cullRangeCooldownTime: 1
   enemies:
   - prefab: {fileID: 3022575421561785183, guid: 47f8f3d2ef85f1e4c847e23d27aa9f1d, type: 3}
     minimumSpawnRangeX: 0.5

@@ -7,11 +7,16 @@ public class EnemySpawner : MonoBehaviour
     public float spawnCooldownTime;
     public float spawnRateCooldownTime;
     public float spawnRateModifier;
+    public float cullRange;
+    public float cullRangeCooldownTime;
     public List<EnemySpawnData> enemies;
+    
 
     private GameObject player;
+    private List<GameObject> spawnedEnemies = new();
     private bool canSpawn = true;
     private bool canSpawnRate = true;
+    private bool canCull = true;
 
     [System.Serializable]
     public class EnemySpawnData
@@ -47,6 +52,15 @@ public class EnemySpawner : MonoBehaviour
 
             StartCoroutine(SpawnRateCooldownRoutine());
         }
+
+        if (canCull)
+        {
+            canCull = false;
+
+            CullEnemiesCheck();
+
+            StartCoroutine(CullCooldownRoutine());
+        }
     }
 
     private void Spawn(EnemySpawnData spawnData)
@@ -70,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
             randomY -= absoluteYDistance * 2;
         }
 
-        Instantiate(spawnData.prefab, new Vector2(randomX, randomY), Quaternion.identity, gameObject.transform);
+        spawnedEnemies.Add(Instantiate(spawnData.prefab, new Vector2(randomX, randomY), Quaternion.identity, gameObject.transform));
     }
 
     IEnumerator SpawnCooldownRoutine()
@@ -83,6 +97,35 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnRateCooldownTime);
         canSpawnRate = true;
+    }
+
+    IEnumerator CullCooldownRoutine()
+    {
+        yield return new WaitForSeconds(cullRangeCooldownTime);
+        canCull = true;
+    }
+
+    private void CullEnemiesCheck()
+    {
+        List<GameObject> enemiesToDespawn = new List<GameObject>();
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (Vector2.Distance(player.transform.position, enemy.transform.position) > cullRange)
+            {
+                enemiesToDespawn.Add(enemy);
+            }
+        }
+
+        foreach (GameObject enemy in enemiesToDespawn)
+        {
+            spawnedEnemies.Remove(enemy);
+            Destroy(enemy);
+        }
+    }
+
+    public void RemoveEnemyFromSpawnedList(GameObject enemy)
+    {
+        spawnedEnemies.Remove(enemy);
     }
 
     public void UpSpawnRate()

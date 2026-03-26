@@ -9,11 +9,12 @@ public class EnemyMovement : MonoBehaviour, IEnemy
     public float distanceFromPlayer;
     public GameObject player;
     public Rigidbody2D rigidBody;
+    public Deathaim deathvfx;
+    public IEnemyMovement enemyMovementInterface;
+    public EnemySpawner enemySpawner;
 
     private Camera playerCamera;
     private bool spottedByPlayer = false;
-    public Deathaim deathvfx;
-    public IEnemyMovement enemyMovementInterface;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         player = GameObject.FindWithTag("Player");
         enemyMovementInterface = gameObject.GetComponent<IEnemyMovement>();
         deathvfx = GameObject.FindWithTag("Deathvfx").GetComponent<Deathaim>();
+        enemySpawner = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
     void Update()
@@ -34,6 +36,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         else if (spottedByPlayer)
         {
             deathvfx.deathevent(this.transform.position);
+            enemySpawner.RemoveEnemyFromSpawnedList(gameObject);
             Destroy(gameObject);
         }
     }
