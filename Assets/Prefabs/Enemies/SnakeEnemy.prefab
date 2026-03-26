@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeMovement
   distanceGoal: 0.5
+  deathvfx: {fileID: 1810188744360878190, guid: 5879bd46371b3574f95a00242d9ff790, type: 3}
   minimumSpawnRange: 1
   maximumSpawnRange: 5
 --- !u!114 &4976931847441270994

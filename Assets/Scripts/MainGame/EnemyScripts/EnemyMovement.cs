@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
 
     private Camera playerCamera;
     private bool spottedByPlayer = false;
+    public Deathaim deathvfx;
     public IEnemyMovement enemyMovementInterface;
 
     private void Start()
@@ -20,6 +21,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         rigidBody = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         enemyMovementInterface = gameObject.GetComponent<IEnemyMovement>();
+        deathvfx = GameObject.FindWithTag("Deathvfx").GetComponent<Deathaim>();
     }
 
     void Update()
@@ -31,6 +33,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         }
         else if (spottedByPlayer)
         {
+            deathvfx.deathevent(this.transform.position);
             Destroy(gameObject);
         }
     }
