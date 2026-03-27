@@ -15,11 +15,11 @@ MonoBehaviour:
   godMode: 0
   maxSanity: 100
   maxStamina: 100
-  staminaRecoveryRate: 0.05
+  staminaRecoveryRate: 0.01
   maxAbilityPower: 30
   movementSpeed: 5
   dashingPower: 10
   dashingTime: 0.2
   dashingCooldown: 0.5
-  dashingCost: 10
+  dashingCost: 25
   nukeOrbCost: 3

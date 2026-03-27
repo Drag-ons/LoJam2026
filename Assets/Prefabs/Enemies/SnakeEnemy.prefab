@@ -87,12 +87,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7483529794788055365, guid: b365dca08311d814382d250620e0ba51, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b365dca08311d814382d250620e0ba51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.43, y: 0.28}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -157,8 +157,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.12}
-    newSize: {x: 0.43, y: 0.28}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -184,6 +184,8 @@ MonoBehaviour:
   distanceFromPlayer: 0
   player: {fileID: 0}
   rigidBody: {fileID: 0}
+  deathvfx: {fileID: 0}
+  enemySpawner: {fileID: 0}
 --- !u!114 &9034996962703706333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,9 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeMovement
   distanceGoal: 0.5
-  deathvfx: {fileID: 1810188744360878190, guid: 5879bd46371b3574f95a00242d9ff790, type: 3}
-  minimumSpawnRange: 1
-  maximumSpawnRange: 5
 --- !u!114 &4976931847441270994
 MonoBehaviour:
   m_ObjectHideFlags: 0

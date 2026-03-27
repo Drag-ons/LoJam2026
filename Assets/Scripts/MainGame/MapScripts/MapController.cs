@@ -22,12 +22,12 @@ public class MapController : MonoBehaviour
 
     void Update()
     {
+        SpawnChunkCheck();
         if (canCheck)
         {
             canCheck = false;
 
             DespawnChunkCheck();
-            SpawnChunkCheck();
 
             StartCoroutine(CooldownRoutine());
         }
