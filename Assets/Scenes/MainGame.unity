@@ -2317,6 +2317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FilterControl
   filter: {fileID: 2100000, guid: 594a536c0f368474fb379763945882c1, type: 2}
   active: 0
+  death: 0
   nukelength: 2
   nukeDowtime: 1
   spawner: {fileID: 921480839}
@@ -4695,6 +4696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fc8b48f464d6342bb2b3906a613936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HPManager
+  filter: {fileID: 1185492671}
   sanity: 100
   canBeDamaged: 1
   stamina: 100

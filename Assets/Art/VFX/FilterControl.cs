@@ -5,6 +5,7 @@ public class FilterControl : MonoBehaviour
 {
     public Material filter;
     public bool active;
+    public bool death;
     public float nukelength;
     public float nukeDowtime;
     public EnemySpawner spawner;
@@ -25,7 +26,18 @@ public class FilterControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (active == true)
+        
+        if(death == true)
+        {
+            if(filter.GetFloat("Intensity") <= 5)
+            {
+                filter.SetFloat("_Intensity", filter.GetFloat("_Intensity") + 0.1f);
+                filter.SetFloat("_Active", filter.GetFloat("_Active") - .13f);
+            }
+        }
+        else
+        {
+            if (active == true)
         {
             spawner.canSpawn = false;
             //filter.SetFloat("_Active", 0.5f)
@@ -49,6 +61,8 @@ public class FilterControl : MonoBehaviour
                 //filter.SetFloat("_Active", 20f);
             }
         }
+        }
+
     }
 
     IEnumerator NukeDuration()
@@ -64,4 +78,5 @@ public class FilterControl : MonoBehaviour
             spawner.canSpawn = true;
         }
     }
+    
 }
