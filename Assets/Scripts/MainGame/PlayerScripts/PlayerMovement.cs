@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float activeMoveSpeed;
     private PlayerResourceController resourceController;
     private FilterControl filterControl;
+    public Dashani dash;
 
     private void Start()
     {
@@ -75,10 +76,12 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        dash.Dash();
         activeMoveSpeed = playerStats.dashingPower;
         yield return new WaitForSeconds(playerStats.dashingTime);
         isDashing = false;
         activeMoveSpeed = playerStats.movementSpeed;
+        dash.Undash();
         yield return new WaitForSeconds(playerStats.dashingCooldown);
         canDash = true;
     }
