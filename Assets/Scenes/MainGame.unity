@@ -388,9 +388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7894093ddb4bd14e86ab348e857760d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerSpawner
-  minimumSpawnRange: 10
-  maximumSpawnRange: 20
-  spawnDistance: 10
+  minimumSpawnRange: 5
+  maximumSpawnRange: 8
+  spawnDistance: 0
   spawnCooldownTime: 10
   spawnRateCooldownTime: 100
   spawnRateModifier: 0.9
