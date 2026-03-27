@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerResourceController : MonoBehaviour
 {
+    public FilterControl filter;
     public float sanity;
     public bool canBeDamaged = true;
     public float stamina;
@@ -53,6 +54,7 @@ public class PlayerResourceController : MonoBehaviour
 
         if (sanity <= 0)
         {
+            filter.death = true;
             isDead = true;
         }
     }
