@@ -122,47 +122,66 @@ public class PlayerMovement : MonoBehaviour
 
     public void Chop(InputAction.CallbackContext context)
     {
+        if (resourceController.CanUseAbility(playerStats.chopOrbCost))
+        {
+            if (ChopAction())
+            {
+                resourceController.RemoveAbilityOrbs(playerStats.chopOrbCost);
+            }
+        }
+    }
+
+    public bool ChopAction()
+    {
+        ChopableController chopableController = null;
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.chopRange);
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.gameObject.TryGetComponent(out chopableController))
+            {
+                chopableController.Chop();
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void Push(InputAction.CallbackContext context)
     {
-        if (resourceController.CanUseAbility(playerStats.pushingCost))
+        if (resourceController.CanUseAbility(playerStats.pushingOrbCost))
         {
-            resourceController.RemoveAbilityOrbs(playerStats.pushingCost);
-            PushEnemiesInCone();
-        }
-    }
+            resourceController.RemoveAbilityOrbs(playerStats.pushingOrbCost);
+            isPushing = true;
+            resourceController.canGainAbility = false;
+            resourceController.canBeDamaged = false;
+            canMove = false;
+            xVelocity = 0;
+            yVelocity = 0;
 
-    private void PushEnemiesInCone()
-    {
-        isPushing = true;
-        resourceController.canGainAbility = false;
-        resourceController.canBeDamaged = false;
-        canMove = false;
-        xVelocity = 0;
-        yVelocity = 0;
+            List<IEnemy> enemiesInCone = new List<IEnemy>();
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.pushingRange);
 
-        List<IEnemy> enemiesInCone = new List<IEnemy>();
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.pushingRange);
-
-        foreach (Collider2D collider in hitColliders)
-        {
-            if (collider.gameObject.TryGetComponent(out IEnemy enemy))
+            foreach (Collider2D collider in hitColliders)
             {
-                Vector2 directionToTarget = (collider.gameObject.transform.position - transform.position).normalized;
-                float angle = Vector2.Angle(GetLastPlayerDirection(), directionToTarget);
-                if (angle < playerStats.pushingAngle / 2f)
+                if (collider.gameObject.TryGetComponent(out IEnemy enemy))
                 {
-                    enemiesInCone.Add(enemy);
+                    Vector2 directionToTarget = (collider.gameObject.transform.position - transform.position).normalized;
+                    float angle = Vector2.Angle(GetLastPlayerDirection(), directionToTarget);
+                    if (angle < playerStats.pushingAngle / 2f)
+                    {
+                        enemiesInCone.Add(enemy);
+                    }
                 }
             }
-        }
 
-        if (enemiesInCone.Count > 0)
-        {
-            foreach (IEnemy enemy in enemiesInCone)
+            if (enemiesInCone.Count > 0)
             {
-                enemy.Push();
+                foreach (IEnemy enemy in enemiesInCone)
+                {
+                    enemy.Push();
+                }
             }
         }
     }
