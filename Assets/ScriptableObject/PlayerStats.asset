@@ -22,4 +22,4 @@ MonoBehaviour:
   dashingTime: 0.2
   dashingCooldown: 0.5
   dashingCost: 10
-  nukeOrbCost: 1
+  nukeOrbCost: 3

@@ -15,4 +15,4 @@ MonoBehaviour:
   minimumSpeed: 1
   maximumSpeed: 5
   damage: 1
-  abilityGain: 30
+  abilityGain: 1
