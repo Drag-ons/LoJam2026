@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving = false;
     public bool canDash = true;
     public bool isDashing = false;
+    public bool isPushing = false;
     public bool isNuking = false;
     public float shakeAmount;
     public float shakeSpeed;
@@ -84,6 +85,34 @@ public class PlayerMovement : MonoBehaviour
         dash.Undash();
         yield return new WaitForSeconds(playerStats.dashingCooldown);
         canDash = true;
+    }
+
+    public void Chop(InputAction.CallbackContext context)
+    {
+    }
+
+    public void Push(InputAction.CallbackContext context)
+    {
+        if (resourceController.CanUseAbility(playerStats.pushingCost))
+        {
+            resourceController.RemoveAbilityOrbs(playerStats.pushingCost);
+            StartCoroutine(PushMove());
+        }
+    }
+
+    private IEnumerator PushMove()
+    {
+        resourceController.canGainAbility = false;
+        resourceController.canBeDamaged = false;
+        isPushing = true;
+        canMove = false;
+        xVelocity = 0;
+        yVelocity = 0;
+        yield return new WaitForSeconds(playerStats.pushingTime);
+        canMove = true;
+        isPushing = false;
+        resourceController.canBeDamaged = true;
+        resourceController.canGainAbility = true;
     }
 
     public void Nuke(InputAction.CallbackContext context)

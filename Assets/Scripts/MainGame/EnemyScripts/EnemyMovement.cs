@@ -1,11 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour, IEnemy
 {
+    public PlayerStats playerStats;
     public EnemyStats enemyStats;
     public float lastXVelocity;
     public bool canMove = false;
     public bool canDamage = false;
+    public bool finishedSpawning = false;
     public float distanceFromPlayer;
     public GameObject player;
     public Rigidbody2D rigidBody;
@@ -16,6 +19,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
     private Camera playerCamera;
     private bool spottedByPlayer = false;
     private PlayerResourceController resourceController;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -23,6 +27,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         rigidBody = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         resourceController = player.GetComponent<PlayerResourceController>();
+        playerMovement = player.GetComponent<PlayerMovement>();
         enemyMovementInterface = gameObject.GetComponent<IEnemyMovement>();
         deathvfx = GameObject.FindWithTag("Deathvfx").GetComponent<Deathaim>();
         enemySpawner = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawner>();
@@ -51,6 +56,11 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         if (rigidBody.linearVelocity.x != 0)
         {
             lastXVelocity = rigidBody.linearVelocity.x;
+        }
+
+        if (playerMovement.isPushing && finishedSpawning)
+        {
+            rigidBody.AddForce((transform.position - player.transform.position).normalized * (playerStats.pushingPower / enemyStats.weight));
         }
     }
 

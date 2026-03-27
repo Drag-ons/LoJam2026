@@ -216,10 +216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb383ae1f391974cb1f5a008981b710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}
   enemyStats: {fileID: 11400000, guid: 8d2b74b83c3f07d4aa5e794476d65040, type: 2}
   lastXVelocity: 0
   canMove: 0
   canDamage: 0
+  finishedSpawning: 0
   distanceFromPlayer: 0
   player: {fileID: 0}
   rigidBody: {fileID: 0}

@@ -560,7 +560,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls:     Move/WASD     Dash/SpaceBar      Nuke/Q'
+  m_text: 'Controls:     Move/WASD     Dash/SpaceBar      Chop (1)/E     Push (2)/F    
+    Nuke (3)/Q'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abab0739150a27245a0a82ac6bcf3bfa, type: 2}
   m_sharedMaterial: {fileID: -4213070417256957519, guid: abab0739150a27245a0a82ac6bcf3bfa, type: 2}
@@ -626,7 +627,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1021.8789, w: 0}
+  m_margin: {x: 0, y: 0, z: -1345.1273, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3708,6 +3709,7 @@ MonoBehaviour:
   isMoving: 0
   canDash: 1
   isDashing: 0
+  isPushing: 0
   isNuking: 0
   shakeAmount: 0.1
   shakeSpeed: 100
@@ -3961,6 +3963,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: de45ff01-65bc-4bcb-b381-1db22743eca3
     m_ActionName: 'Player/Ultimate[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2068199339}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Push
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b032a0bc-69c3-4518-889c-81519cd5c7a4
+    m_ActionName: 'Player/Push[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2068199339}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Chop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 858f21ae-912a-406d-8db3-ee7137e89104
+    m_ActionName: 'Player/Chop[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

@@ -7,4 +7,5 @@ public class EnemyStats : ScriptableObject
     public float maximumSpeed;
     public float damage;
     public float abilityGain;
+    public float weight;
 }
