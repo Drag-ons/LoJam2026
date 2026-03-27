@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float lastXVelocity;
+    public Vector2 lastLinearVelocity;
     public float xVelocity;
     public float yVelocity;
     public bool canMove = true;
@@ -41,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
             lastXVelocity = xVelocity;
         }
 
+        if (rigidBody.linearVelocity.x != 0 || rigidBody.linearVelocity.y != 0)
+        {
+            lastLinearVelocity = rigidBody.linearVelocity.normalized;
+        }
+
         rigidBody.linearVelocity = new Vector2(xVelocity * activeMoveSpeed, yVelocity * activeMoveSpeed);
 
         if (isShaking)
@@ -61,6 +68,32 @@ public class PlayerMovement : MonoBehaviour
         {
             xVelocity = 0;
             yVelocity = 0;
+        }
+    }
+
+    private Vector2 GetLastPlayerDirection()
+    {
+        if (Mathf.Abs(lastLinearVelocity.x) > Mathf.Abs(lastLinearVelocity.y))
+        {
+            if (lastLinearVelocity.x > 0)
+            {
+                return transform.right;
+            }
+            else
+            {
+                return -transform.right;
+            }
+        }
+        else
+        {
+            if (lastLinearVelocity.y > 0)
+            {
+                return transform.up;
+            }
+            else
+            {
+                return -transform.up;
+            }
         }
     }
 
@@ -96,23 +129,42 @@ public class PlayerMovement : MonoBehaviour
         if (resourceController.CanUseAbility(playerStats.pushingCost))
         {
             resourceController.RemoveAbilityOrbs(playerStats.pushingCost);
-            StartCoroutine(PushMove());
+            PushEnemiesInCone();
         }
     }
 
-    private IEnumerator PushMove()
+    private void PushEnemiesInCone()
     {
+        isPushing = true;
         resourceController.canGainAbility = false;
         resourceController.canBeDamaged = false;
-        isPushing = true;
         canMove = false;
         xVelocity = 0;
         yVelocity = 0;
-        yield return new WaitForSeconds(playerStats.pushingTime);
-        canMove = true;
-        isPushing = false;
-        resourceController.canBeDamaged = true;
-        resourceController.canGainAbility = true;
+
+        List<IEnemy> enemiesInCone = new List<IEnemy>();
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.pushingRange);
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.gameObject.TryGetComponent(out IEnemy enemy))
+            {
+                Vector2 directionToTarget = (collider.gameObject.transform.position - transform.position).normalized;
+                float angle = Vector2.Angle(GetLastPlayerDirection(), directionToTarget);
+                if (angle < playerStats.pushingAngle / 2f)
+                {
+                    enemiesInCone.Add(enemy);
+                }
+            }
+        }
+
+        if (enemiesInCone.Count > 0)
+        {
+            foreach (IEnemy enemy in enemiesInCone)
+            {
+                enemy.Push();
+            }
+        }
     }
 
     public void Nuke(InputAction.CallbackContext context)

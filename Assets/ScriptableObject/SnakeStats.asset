@@ -16,4 +16,4 @@ MonoBehaviour:
   maximumSpeed: 5
   damage: 0.1
   abilityGain: 1
-  weight: 0.1
+  weight: 0.05

@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
     public float lastXVelocity;
     public bool canMove = false;
     public bool canDamage = false;
+    public bool beingPushed = false;
     public bool finishedSpawning = false;
     public float distanceFromPlayer;
     public GameObject player;
@@ -58,7 +59,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
             lastXVelocity = rigidBody.linearVelocity.x;
         }
 
-        if (playerMovement.isPushing && finishedSpawning)
+        if (beingPushed && finishedSpawning)
         {
             rigidBody.AddForce((transform.position - player.transform.position).normalized * (playerStats.pushingPower / enemyStats.weight));
         }
@@ -70,5 +71,17 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         {
             playerResourceController.RemoveSanity(enemyStats.damage);
         }
+    }
+
+    public void Push()
+    {
+        StartCoroutine(PushMove());
+    }
+
+    private IEnumerator PushMove()
+    {
+        beingPushed = true;
+        yield return new WaitForSeconds(playerStats.pushingTime);
+        beingPushed = false;
     }
 }

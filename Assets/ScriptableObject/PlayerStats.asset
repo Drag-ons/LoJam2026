@@ -22,7 +22,9 @@ MonoBehaviour:
   dashingTime: 0.2
   dashingCooldown: 0.5
   dashingCost: 25
-  pushingPower: 10
+  pushingPower: 25
+  pushingRange: 5
+  pushingAngle: 90
   pushingTime: 1
   pushingCost: 0
   nukeOrbCost: 3

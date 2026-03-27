@@ -14,6 +14,8 @@ public class PlayerStats : ScriptableObject
     public float dashingCooldown;
     public float dashingCost;
     public float pushingPower;
+    public float pushingRange;
+    public float pushingAngle;
     public float pushingTime;
     public int pushingCost;
     public int nukeOrbCost;
