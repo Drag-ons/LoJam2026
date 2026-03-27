@@ -99,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
         isShaking = true;
         isNuking = true;
         canMove = false;
+        xVelocity = 0;
+        yVelocity = 0;
         filterControl.Nuke();
         yield return new WaitUntil(() => filterControl.active == false);
         canMove = true;

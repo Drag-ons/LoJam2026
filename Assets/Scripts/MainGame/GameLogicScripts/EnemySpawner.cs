@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour
     public float cullRangeCooldownTime;
     public List<EnemySpawnData> enemies;
 
-
     private GameObject player;
     public List<GameObject> spawnedEnemies = new();
     //changed to public for nuke
