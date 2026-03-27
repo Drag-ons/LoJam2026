@@ -29,7 +29,7 @@ public class FilterControl : MonoBehaviour
         
         if(death == true)
         {
-            if(filter.GetFloat("Intensity") <= 5)
+            if(filter.GetFloat("_Intensity") <= 5)
             {
                 filter.SetFloat("_Intensity", filter.GetFloat("_Intensity") + 0.1f);
                 filter.SetFloat("_Active", filter.GetFloat("_Active") - .13f);
