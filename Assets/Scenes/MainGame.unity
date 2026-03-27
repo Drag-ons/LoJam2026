@@ -925,7 +925,6 @@ MonoBehaviour:
   activeChunks: []
   prefabChunks:
   - {fileID: 2655337474716028365, guid: c7a9dac3b95b6a14abb315614e75820f, type: 3}
-  - {fileID: 2655337474716028365, guid: fd01d00850f971f44a8f94682063b839, type: 3}
   despawnRange: 35
   cooldownTime: 0
 --- !u!4 &275988246
