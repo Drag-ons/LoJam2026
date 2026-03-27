@@ -7,13 +7,14 @@ public class PlayerResourceController : MonoBehaviour
     public bool canBeDamaged = true;
     public float stamina;
     public float abilityPower;
+    public bool canGainAbility = true;
+    public bool isDead = false;
     public PlayerStats playerStats;
     public Slider sanityBarSlider;
     public Slider staminaBarSlider;
     public Slider ability1BarSlider;
     public Slider ability2BarSlider;
     public Slider ability3BarSlider;
-    public GameObject deathmenu;
 
     private float orbUiIncrements;
     private float abilityIncrements;
@@ -52,8 +53,7 @@ public class PlayerResourceController : MonoBehaviour
 
         if (sanity <= 0)
         {
-            Time.timeScale = 0;
-            deathmenu.SetActive(true);
+            isDead = true;
         }
     }
 
@@ -64,8 +64,11 @@ public class PlayerResourceController : MonoBehaviour
 
     public void AddAbilityResource(float ability)
     {
-        abilityPower = Mathf.Clamp(abilityPower + ability, 0, playerStats.maxAbilityPower);
-        UpdateOrbUi();
+        if (canGainAbility)
+        {
+            abilityPower = Mathf.Clamp(abilityPower + ability, 0, playerStats.maxAbilityPower);
+            UpdateOrbUi();
+        }
     }
 
     public void RemoveAbilityOrbs(int abilityOrbCount)

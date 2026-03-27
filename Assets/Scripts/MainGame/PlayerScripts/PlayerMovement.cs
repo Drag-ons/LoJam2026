@@ -55,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
             xVelocity = context.ReadValue<Vector2>().x;
             yVelocity = context.ReadValue<Vector2>().y;
         }
+        else
+        {
+            xVelocity = 0;
+            yVelocity = 0;
+        }
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -89,17 +94,17 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator NukeAction()
     {
+        resourceController.canGainAbility = false;
         resourceController.canBeDamaged = false;
         isShaking = true;
         isNuking = true;
         canMove = false;
-        xVelocity = 0;
-        yVelocity = 0;
         filterControl.Nuke();
         yield return new WaitUntil(() => filterControl.active == false);
         canMove = true;
         isNuking = false;
         isShaking = false;
         resourceController.canBeDamaged = true;
+        resourceController.canGainAbility = true;
     }
 }
