@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
     public Deathaim deathvfx;
     public IEnemyMovement enemyMovementInterface;
     public EnemySpawner enemySpawner;
+    
 
     private Camera playerCamera;
     private bool spottedByPlayer = false;

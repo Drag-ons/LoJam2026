@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class PlayerResourceController : MonoBehaviour
 {
     public FilterControl filter;
@@ -16,6 +16,8 @@ public class PlayerResourceController : MonoBehaviour
     public Slider ability1BarSlider;
     public Slider ability2BarSlider;
     public Slider ability3BarSlider;
+    public Material damage;
+    private bool hit;
 
     private float orbUiIncrements;
     private float abilityIncrements;
@@ -33,12 +35,15 @@ public class PlayerResourceController : MonoBehaviour
         abilityPower = playerStats.startingAbilityPower;
         abilityIncrements = playerStats.maxAbilityPower / 3;
         orbUiIncrements = 1 / abilityIncrements;
+
+        damage.SetFloat("_DMG",0);
     }
 
     void Update()
     {
         stamina = Mathf.Clamp(stamina + playerStats.staminaRecoveryRate, 0, playerStats.maxStamina);
         staminaBarSlider.value = stamina;
+        
     }
 
     public void AddSanity(float health)
@@ -51,7 +56,9 @@ public class PlayerResourceController : MonoBehaviour
     {
         sanity = Mathf.Clamp(sanity - dmg, 0, playerStats.maxSanity);
         sanityBarSlider.value = sanity;
-
+        damage.SetFloat("_DMG",1);
+        hit = true;
+        StartCoroutine(Damagecheck());
         if (sanity <= 0)
         {
             filter.death = true;
@@ -127,6 +134,15 @@ public class PlayerResourceController : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out ICollectable collectable))
         {
             collectable.Collect(this);
+        }
+    }
+    IEnumerator Damagecheck()
+    {
+        while(hit == true)
+        {
+            yield return new WaitForSeconds(2);
+            damage.SetFloat("_DMG",0);
+            hit = false;
         }
     }
 }
