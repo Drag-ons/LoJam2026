@@ -1,16 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float lastXVelocity;
+    public Vector2 lastLinearVelocity;
     public float xVelocity;
     public float yVelocity;
     public bool canMove = true;
     public bool isMoving = false;
     public bool canDash = true;
     public bool isDashing = false;
+    public bool isPushing = false;
     public bool isNuking = false;
     public float shakeAmount;
     public float shakeSpeed;
@@ -40,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
             lastXVelocity = xVelocity;
         }
 
+        if (rigidBody.linearVelocity.x != 0 || rigidBody.linearVelocity.y != 0)
+        {
+            lastLinearVelocity = rigidBody.linearVelocity.normalized;
+        }
+
         rigidBody.linearVelocity = new Vector2(xVelocity * activeMoveSpeed, yVelocity * activeMoveSpeed);
 
         if (isShaking)
@@ -60,6 +68,32 @@ public class PlayerMovement : MonoBehaviour
         {
             xVelocity = 0;
             yVelocity = 0;
+        }
+    }
+
+    private Vector2 GetLastPlayerDirection()
+    {
+        if (Mathf.Abs(lastLinearVelocity.x) > Mathf.Abs(lastLinearVelocity.y))
+        {
+            if (lastLinearVelocity.x > 0)
+            {
+                return transform.right;
+            }
+            else
+            {
+                return -transform.right;
+            }
+        }
+        else
+        {
+            if (lastLinearVelocity.y > 0)
+            {
+                return transform.up;
+            }
+            else
+            {
+                return -transform.up;
+            }
         }
     }
 
@@ -84,6 +118,72 @@ public class PlayerMovement : MonoBehaviour
         dash.Undash();
         yield return new WaitForSeconds(playerStats.dashingCooldown);
         canDash = true;
+    }
+
+    public void Chop(InputAction.CallbackContext context)
+    {
+        if (resourceController.CanUseAbility(playerStats.chopOrbCost))
+        {
+            if (ChopAction())
+            {
+                resourceController.RemoveAbilityOrbs(playerStats.chopOrbCost);
+            }
+        }
+    }
+
+    public bool ChopAction()
+    {
+        ChopableController chopableController = null;
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.chopRange);
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.gameObject.TryGetComponent(out chopableController))
+            {
+                chopableController.Chop();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void Push(InputAction.CallbackContext context)
+    {
+        if (resourceController.CanUseAbility(playerStats.pushingOrbCost))
+        {
+            resourceController.RemoveAbilityOrbs(playerStats.pushingOrbCost);
+            isPushing = true;
+            resourceController.canGainAbility = false;
+            resourceController.canBeDamaged = false;
+            canMove = false;
+            xVelocity = 0;
+            yVelocity = 0;
+
+            List<IEnemy> enemiesInCone = new List<IEnemy>();
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.pushingRange);
+
+            foreach (Collider2D collider in hitColliders)
+            {
+                if (collider.gameObject.TryGetComponent(out IEnemy enemy))
+                {
+                    Vector2 directionToTarget = (collider.gameObject.transform.position - transform.position).normalized;
+                    float angle = Vector2.Angle(GetLastPlayerDirection(), directionToTarget);
+                    if (angle < playerStats.pushingAngle / 2f)
+                    {
+                        enemiesInCone.Add(enemy);
+                    }
+                }
+            }
+
+            if (enemiesInCone.Count > 0)
+            {
+                foreach (IEnemy enemy in enemiesInCone)
+                {
+                    enemy.Push();
+                }
+            }
+        }
     }
 
     public void Nuke(InputAction.CallbackContext context)

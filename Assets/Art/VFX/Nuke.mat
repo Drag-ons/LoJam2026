@@ -54,6 +54,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Active: 5.13
+    - _Bits: 64
     - _EnableExternalAlpha: 0
     - _Intensity: -0.1
     - _Intesnsity: 0
