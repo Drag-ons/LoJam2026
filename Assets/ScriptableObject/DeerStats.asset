@@ -17,3 +17,7 @@ MonoBehaviour:
   damage: 10
   abilityGain: 1
   weight: 2
+  minimumSpawnRangeX: 4.8
+  maximumSpawnRangeX: 5
+  minimumSpawnRangeY: 0
+  maximumSpawnRangeY: 3
