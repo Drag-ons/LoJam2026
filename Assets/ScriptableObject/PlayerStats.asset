@@ -16,6 +16,7 @@ MonoBehaviour:
   maxSanity: 100
   maxStamina: 100
   staminaRecoveryRate: 0.01
+  startingAbilityPower: 0
   maxAbilityPower: 30
   movementSpeed: 5
   dashingPower: 10
@@ -29,4 +30,5 @@ MonoBehaviour:
   pushingAngle: 90
   pushingTime: 1
   pushingOrbCost: 2
+  nukeDowntime: 1
   nukeOrbCost: 3
