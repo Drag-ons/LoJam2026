@@ -18,6 +18,7 @@ public class EnemyAnimation : MonoBehaviour
     {
         enemyMovement.canMove = true;
         enemyMovement.canDamage = true;
+        enemyMovement.finishedSpawning = true;
     }
 
     void Update()

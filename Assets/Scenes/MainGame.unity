@@ -344,59 +344,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88948254}
   m_CullTransparentMesh: 1
---- !u!1 &112588314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 112588315}
-  - component: {fileID: 112588316}
-  m_Layer: 0
-  m_Name: PowerSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &112588315
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112588314}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29069, y: -0.85946, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &112588316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112588314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7894093ddb4bd14e86ab348e857760d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerSpawner
-  minimumSpawnRange: 5
-  maximumSpawnRange: 8
-  spawnDistance: 0
-  spawnCooldownTime: 10
-  spawnRateCooldownTime: 100
-  spawnRateModifier: 0.9
-  powers:
-  - {fileID: 1488636465405776611, guid: 6c2a1245fb5154943967f66988e19471, type: 3}
-  - {fileID: 1488636465405776611, guid: 5c5aae51003966b428fe1fe8f5c946e9, type: 3}
 --- !u!1 &119063174
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +507,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls:     Move/WASD     Dash/SpaceBar      Nuke/Q'
+  m_text: 'Controls:     Move/WASD     Dash/SpaceBar      Chop (1)/E     Push (2)/F    
+    Nuke (3)/Q'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abab0739150a27245a0a82ac6bcf3bfa, type: 2}
   m_sharedMaterial: {fileID: -4213070417256957519, guid: abab0739150a27245a0a82ac6bcf3bfa, type: 2}
@@ -626,7 +574,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1021.8789, w: 0}
+  m_margin: {x: 0, y: 0, z: -1345.1273, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -723,6 +671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200701336}
   - component: {fileID: 200701335}
+  - component: {fileID: 200701337}
   m_Layer: 0
   m_Name: Big Rock
   m_TagString: Untagged
@@ -804,6 +753,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &200701337
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200701334}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.87, y: 0.79}
+    newSize: {x: 0.87, y: 0.79}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.87, y: 0.79}
+  m_EdgeRadius: 0
 --- !u!1 &237379172
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,9 +947,11 @@ GameObject:
   m_Component:
   - component: {fileID: 359838771}
   - component: {fileID: 359838770}
+  - component: {fileID: 359838772}
+  - component: {fileID: 359838773}
   m_Layer: 0
   m_Name: TwinkTree
-  m_TagString: Untagged
+  m_TagString: Chopable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,6 +1030,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359838772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359838769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a7d5b58dc6d5d419f8b7e60d1598ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChopableController
+  spawnables:
+  - {fileID: 1488636465405776611, guid: 6c2a1245fb5154943967f66988e19471, type: 3}
+  - {fileID: 1488636465405776611, guid: 5c5aae51003966b428fe1fe8f5c946e9, type: 3}
+--- !u!61 &359838773
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359838769}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 1.42}
+    newSize: {x: 0.99, y: 1.42}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.99, y: 1.42}
+  m_EdgeRadius: 0
 --- !u!1 &371772976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,9 +1173,11 @@ GameObject:
   m_Component:
   - component: {fileID: 405167992}
   - component: {fileID: 405167991}
+  - component: {fileID: 405167993}
+  - component: {fileID: 405167994}
   m_Layer: 0
   m_Name: BigTree
-  m_TagString: Untagged
+  m_TagString: Chopable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,6 +1256,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405167993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405167990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a7d5b58dc6d5d419f8b7e60d1598ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChopableController
+  spawnables:
+  - {fileID: 1488636465405776611, guid: 6c2a1245fb5154943967f66988e19471, type: 3}
+  - {fileID: 1488636465405776611, guid: 5c5aae51003966b428fe1fe8f5c946e9, type: 3}
+--- !u!61 &405167994
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405167990}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 1.42}
+    newSize: {x: 0.99, y: 1.42}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.99, y: 1.42}
+  m_EdgeRadius: 0
 --- !u!1 &487653844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,12 +3823,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   lastXVelocity: 0
+  lastLinearVelocity: {x: 0, y: 0}
   xVelocity: 0
   yVelocity: 0
   canMove: 1
   isMoving: 0
   canDash: 1
   isDashing: 0
+  isPushing: 0
   isNuking: 0
   shakeAmount: 0.1
   shakeSpeed: 100
@@ -3961,6 +4084,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: de45ff01-65bc-4bcb-b381-1db22743eca3
     m_ActionName: 'Player/Ultimate[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2068199339}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Push
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b032a0bc-69c3-4518-889c-81519cd5c7a4
+    m_ActionName: 'Player/Push[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2068199339}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Chop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 858f21ae-912a-406d-8db3-ee7137e89104
+    m_ActionName: 'Player/Chop[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -4213,7 +4368,6 @@ SceneRoots:
   - {fileID: 644109699}
   - {fileID: 1291687421}
   - {fileID: 921480840}
-  - {fileID: 112588315}
   - {fileID: 275988246}
   - {fileID: 1615003631}
   - {fileID: 405167992}
