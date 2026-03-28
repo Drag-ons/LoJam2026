@@ -8,6 +8,7 @@ TagManager:
   - Deathvfx
   - EnemySpawner
   - Chopable
+  - Slash
   layers:
   - Default
   - TransparentFX
