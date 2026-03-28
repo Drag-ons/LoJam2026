@@ -6,7 +6,10 @@ public class HealthPickupController : MonoBehaviour, ICollectable
 
     public void Collect(PlayerResourceController playerResourceController)
     {
-        playerResourceController.AddSanity(healingPower);
-        Destroy(gameObject);
+         if (playerResourceController.sanity < playerResourceController.playerStats.maxSanity)
+        {
+            playerResourceController.AddSanity(healingPower);
+            Destroy(gameObject);
+        }
     }
 }

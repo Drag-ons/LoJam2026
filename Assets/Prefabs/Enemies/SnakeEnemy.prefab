@@ -83,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1773632363
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b365dca08311d814382d250620e0ba51, type: 3}
@@ -181,7 +181,9 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 385478519eb7f0546b044ac2d75c2c01, type: 2}
   lastXVelocity: 0
   canMove: 0
+  isFleeing: 0
   canDamage: 0
+  beingPushed: 0
   finishedSpawning: 0
   distanceFromPlayer: 0
   player: {fileID: 0}

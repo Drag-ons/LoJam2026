@@ -8,4 +8,8 @@ public class EnemyStats : ScriptableObject
     public float damage;
     public float abilityGain;
     public float weight;
+    public float minimumSpawnRangeX;
+    public float maximumSpawnRangeX;
+    public float minimumSpawnRangeY;
+    public float maximumSpawnRangeY;
 }

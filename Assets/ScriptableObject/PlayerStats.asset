@@ -18,11 +18,11 @@ MonoBehaviour:
   staminaRecoveryRate: 0.01
   startingAbilityPower: 0
   maxAbilityPower: 30
-  movementSpeed: 5
-  dashingPower: 10
-  dashingTime: 0.2
+  movementSpeed: 2
+  dashingPower: 5
+  dashingTime: 0.5
   dashingCooldown: 0.5
-  dashingCost: 25
+  dashingCost: 10
   chopOrbCost: 1
   chopRange: 1
   pushingPower: 25

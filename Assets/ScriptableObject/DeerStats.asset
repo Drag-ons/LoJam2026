@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7adeaad20c306947bbc147c91a63454, type: 3}
   m_Name: DeerStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  minimumSpeed: 1
+  minimumSpeed: 3
   maximumSpeed: 5
-  damage: 10
+  damage: 1
   abilityGain: 1
   weight: 2
+  minimumSpawnRangeX: 4
+  maximumSpawnRangeX: 4.8
+  minimumSpawnRangeY: 0
+  maximumSpawnRangeY: 2

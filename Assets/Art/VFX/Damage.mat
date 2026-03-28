@@ -55,7 +55,7 @@ Material:
     m_Floats:
     - _Active: 10
     - _Bits: 64
-    - _DMG: 1
+    - _DMG: 0
     - _Damage: 0
     - _Damaged: 0
     - _Density: 10

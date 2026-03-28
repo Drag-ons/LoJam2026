@@ -447,7 +447,7 @@ Canvas:
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2050994403
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &159190324
@@ -1936,23 +1936,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   canSpawn: 1
   spawnCap: 100
-  spawnCooldownTime: 1
-  spawnRateCooldownTime: 1
-  spawnRateModifier: 0.9
+  wave: 0
+  timeBetweenWave: 2
+  snakePrefab: {fileID: 3022575421561785183, guid: 47f8f3d2ef85f1e4c847e23d27aa9f1d, type: 3}
+  snakeStats: {fileID: 11400000, guid: 385478519eb7f0546b044ac2d75c2c01, type: 2}
+  deerPrefab: {fileID: 5978028102599777083, guid: f785fe8a056088943bf9b94e7163e6f2, type: 3}
+  deerStats: {fileID: 11400000, guid: 8d2b74b83c3f07d4aa5e794476d65040, type: 2}
   cullRange: 10
   cullRangeCooldownTime: 1
-  enemies:
-  - prefab: {fileID: 3022575421561785183, guid: 47f8f3d2ef85f1e4c847e23d27aa9f1d, type: 3}
-    minimumSpawnRangeX: 0.5
-    maximumSpawnRangeX: 5
-    minimumSpawnRangeY: 0.5
-    maximumSpawnRangeY: 3
-  - prefab: {fileID: 5978028102599777083, guid: f785fe8a056088943bf9b94e7163e6f2, type: 3}
-    minimumSpawnRangeX: 4.8
-    maximumSpawnRangeX: 5
-    minimumSpawnRangeY: 0
-    maximumSpawnRangeY: 3
   spawnedEnemies: []
+  waveEvents:
+  - waveTrigger: 0
+    spawnSnakeAmount: 1
+    spawnDeerAmount: 0
+  - waveTrigger: 1
+    spawnSnakeAmount: 2
+    spawnDeerAmount: 0
+  - waveTrigger: 3
+    spawnSnakeAmount: 2
+    spawnDeerAmount: 1
+  - waveTrigger: 5
+    spawnSnakeAmount: 0
+    spawnDeerAmount: 2
 --- !u!4 &921480840
 Transform:
   m_ObjectHideFlags: 0
@@ -2470,10 +2475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3765,8 +3770,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1848989885
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: fb7dee182b83ef54bab0aef5e430a638, type: 3}
