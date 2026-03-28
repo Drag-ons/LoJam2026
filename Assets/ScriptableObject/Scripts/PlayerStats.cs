@@ -7,6 +7,7 @@ public class PlayerStats : ScriptableObject
     public float maxSanity;
     public float maxStamina;
     public float staminaRecoveryRate;
+    public float startingAbilityPower;
     public float maxAbilityPower;
     public float movementSpeed;
     public float dashingPower;
@@ -20,5 +21,6 @@ public class PlayerStats : ScriptableObject
     public float pushingAngle;
     public float pushingTime;
     public int pushingOrbCost;
+    public int nukeDowntime;
     public int nukeOrbCost;
 }

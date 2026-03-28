@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isDashing = false;
     public bool isPushing = false;
     public bool isNuking = false;
+    public bool nukeCooldown = false;
     public float shakeAmount;
     public float shakeSpeed;
     public bool isShaking = false;
@@ -201,15 +202,18 @@ public class PlayerMovement : MonoBehaviour
         resourceController.canBeDamaged = false;
         isShaking = true;
         isNuking = true;
+        nukeCooldown = true;
         canMove = false;
         xVelocity = 0;
         yVelocity = 0;
         filterControl.Nuke();
         yield return new WaitUntil(() => filterControl.active == false);
-        canMove = true;
         isNuking = false;
+        canMove = true;
         isShaking = false;
         resourceController.canBeDamaged = true;
         resourceController.canGainAbility = true;
+        yield return new WaitForSeconds(playerStats.nukeDowntime);
+        nukeCooldown = false;
     }
 }

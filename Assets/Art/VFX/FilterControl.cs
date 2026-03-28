@@ -7,7 +7,6 @@ public class FilterControl : MonoBehaviour
     public bool active;
     public bool death;
     public float nukelength;
-    public float nukeDowtime;
     public EnemySpawner spawner;
     public GameObject player;
 
@@ -39,7 +38,6 @@ public class FilterControl : MonoBehaviour
         {
             if (active == true)
         {
-            spawner.canSpawn = false;
             //filter.SetFloat("_Active", 0.5f)
             if (filter.GetFloat("_Intensity") <= 3)
             {
@@ -73,9 +71,6 @@ public class FilterControl : MonoBehaviour
             spawner.NukeAllEnemies();
             yield return new WaitForSeconds(nukelength / 2);
             active = false;
-
-            yield return new WaitForSeconds(nukeDowtime);
-            spawner.canSpawn = true;
         }
     }
     

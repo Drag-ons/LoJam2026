@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
     public EnemyStats enemyStats;
     public float lastXVelocity;
     public bool canMove = false;
+    public bool isFleeing = false;
     public bool canDamage = false;
     public bool beingPushed = false;
     public bool finishedSpawning = false;
@@ -47,6 +48,15 @@ public class EnemyMovement : MonoBehaviour, IEnemy
             deathvfx.deathevent(this.transform.position);
             enemySpawner.RemoveEnemyFromSpawnedList(gameObject);
             Destroy(gameObject);
+        }
+
+        if (playerMovement.isNuking)
+        {
+            isFleeing = true;
+        }
+        else
+        {
+            isFleeing = false;
         }
     }
 

@@ -23,14 +23,14 @@ public class PlayerResourceController : MonoBehaviour
     void Start()
     {
         sanity = playerStats.maxSanity;
-        stamina = playerStats.maxStamina;
-
         sanityBarSlider.maxValue = playerStats.maxSanity;
         sanityBarSlider.value = sanity;
 
+        stamina = playerStats.maxStamina;
         staminaBarSlider.maxValue = playerStats.maxStamina;
         staminaBarSlider.value = stamina;
 
+        abilityPower = playerStats.startingAbilityPower;
         abilityIncrements = playerStats.maxAbilityPower / 3;
         orbUiIncrements = 1 / abilityIncrements;
     }

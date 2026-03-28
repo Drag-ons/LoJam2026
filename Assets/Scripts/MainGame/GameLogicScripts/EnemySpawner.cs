@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool canSpawn = true;
+    public int spawnCap;
     public float spawnCooldownTime;
     public float spawnRateCooldownTime;
     public float spawnRateModifier;
     public float cullRange;
     public float cullRangeCooldownTime;
     public List<EnemySpawnData> enemies;
+    public List<GameObject> spawnedEnemies = new();
 
     private GameObject player;
-    public List<GameObject> spawnedEnemies = new();
-    //changed to public for nuke
-    public bool canSpawn = true;
-    //changed to public for nuke
+    private PlayerMovement playerMovement;
+    private PlayerResourceController playerResource;
     private bool canSpawnRate = true;
     private bool canCull = true;
 
@@ -32,11 +33,14 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerResource = player.GetComponent<PlayerResourceController>();
     }
 
     void Update()
     {
-        if (canSpawn)
+        if (canSpawn && spawnedEnemies.Count < spawnCap
+            && !playerResource.isDead && !playerMovement.nukeCooldown)
         {
             canSpawn = false;
 
