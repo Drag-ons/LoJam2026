@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5978028102599777083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,7 +224,9 @@ MonoBehaviour:
   canDamage: 0
   beingPushed: 0
   finishedSpawning: 0
+  spottedByPlayer: 0
   distanceFromPlayer: 0
+  spottedDelay: 1
   player: {fileID: 0}
   rigidBody: {fileID: 0}
   deathvfx: {fileID: 0}

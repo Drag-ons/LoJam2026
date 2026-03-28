@@ -11,6 +11,10 @@ public class EnemySpawner : MonoBehaviour
     public EnemyStats snakeStats;
     public GameObject deerPrefab;
     public EnemyStats deerStats;
+    public GameObject hawkTuahPrefab;
+    public EnemyStats hawkTuahStats;
+    public GameObject badgerPrefab;
+    public EnemyStats badgerTuahStats;
     public List<GameObject> spawnedEnemies = new();
 
     private GameObject player;
@@ -43,6 +47,16 @@ public class EnemySpawner : MonoBehaviour
                     for (int i = 0; i < waveEvent.spawnDeerAmount; i++)
                     {
                         Spawn(deerPrefab, deerStats);
+                    }
+
+                    for (int i = 0; i < waveEvent.spawnHawkTuahAmount; i++)
+                    {
+                        Spawn(hawkTuahPrefab, hawkTuahStats);
+                    }
+
+                    for (int i = 0; i < waveEvent.spawnBadgerAmount; i++)
+                    {
+                        Spawn(badgerPrefab, badgerTuahStats);
                     }
                 }
             }

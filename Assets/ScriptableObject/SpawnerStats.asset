@@ -18,14 +18,7 @@ MonoBehaviour:
   cullRangeCooldownTime: 1
   waveEvents:
   - waveTrigger: 0
-    spawnSnakeAmount: 1
-    spawnDeerAmount: 0
-  - waveTrigger: 1
-    spawnSnakeAmount: 2
-    spawnDeerAmount: 0
-  - waveTrigger: 3
-    spawnSnakeAmount: 2
-    spawnDeerAmount: 1
-  - waveTrigger: 5
     spawnSnakeAmount: 0
-    spawnDeerAmount: 2
+    spawnDeerAmount: 0
+    spawnHawkTuahAmount: 0
+    spawnBadgerAmount: 1

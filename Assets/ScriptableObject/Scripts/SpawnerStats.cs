@@ -16,5 +16,7 @@ public class SpawnerStats : ScriptableObject
         public int waveTrigger;
         public int spawnSnakeAmount;
         public int spawnDeerAmount;
+        public int spawnHawkTuahAmount;
+        public int spawnBadgerAmount;
     }
 }

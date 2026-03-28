@@ -27,7 +27,7 @@ MonoBehaviour:
   chopRange: 1
   pushingPower: 25
   pushingRange: 5
-  pushingAngle: 90
+  pushingAngle: 100
   pushingTime: 1
   pushingOrbCost: 2
   nukeDowntime: 1
