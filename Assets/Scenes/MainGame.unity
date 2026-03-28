@@ -4027,7 +4027,7 @@ MonoBehaviour:
   sanity: 100
   canBeDamaged: 1
   stamina: 100
-  abilityPower: 100
+  abilityPower: 0
   canGainAbility: 1
   isDead: 0
   playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}
