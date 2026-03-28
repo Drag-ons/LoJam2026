@@ -53,7 +53,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Active: 3.3699942
+    - _Active: 10
     - _Bits: 64
     - _EnableExternalAlpha: 0
     - _Intensity: 5.0999975

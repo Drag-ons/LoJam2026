@@ -37,6 +37,8 @@ public class StateController : MonoBehaviour
             overlayGui.SetActive(false);
             playerMovement.canDash = false;
             playerMovement.canMove = false;
+            playerMovement.xVelocity = 0;
+            playerMovement.yVelocity = 0;
             playerResource.canBeDamaged = false;
             playerResource.canGainAbility = false;
             enemySpawnerScript.canSpawn = false;

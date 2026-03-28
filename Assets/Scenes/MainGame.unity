@@ -467,7 +467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &159190325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1935,29 +1935,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   canSpawn: 1
-  spawnCap: 100
   wave: 0
-  timeBetweenWave: 2
+  spawnerStats: {fileID: 11400000, guid: 092667bc668a9bc4dab48f5a08123519, type: 2}
   snakePrefab: {fileID: 3022575421561785183, guid: 47f8f3d2ef85f1e4c847e23d27aa9f1d, type: 3}
   snakeStats: {fileID: 11400000, guid: 385478519eb7f0546b044ac2d75c2c01, type: 2}
   deerPrefab: {fileID: 5978028102599777083, guid: f785fe8a056088943bf9b94e7163e6f2, type: 3}
   deerStats: {fileID: 11400000, guid: 8d2b74b83c3f07d4aa5e794476d65040, type: 2}
-  cullRange: 10
-  cullRangeCooldownTime: 1
   spawnedEnemies: []
-  waveEvents:
-  - waveTrigger: 0
-    spawnSnakeAmount: 1
-    spawnDeerAmount: 0
-  - waveTrigger: 1
-    spawnSnakeAmount: 2
-    spawnDeerAmount: 0
-  - waveTrigger: 3
-    spawnSnakeAmount: 2
-    spawnDeerAmount: 1
-  - waveTrigger: 5
-    spawnSnakeAmount: 0
-    spawnDeerAmount: 2
 --- !u!4 &921480840
 Transform:
   m_ObjectHideFlags: 0
@@ -3202,7 +3186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -760, y: 430}
+  m_AnchoredPosition: {x: -720, y: 400}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1849858751
@@ -4027,7 +4011,7 @@ MonoBehaviour:
   sanity: 100
   canBeDamaged: 1
   stamina: 100
-  abilityPower: 100
+  abilityPower: 0
   canGainAbility: 1
   isDead: 0
   playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}

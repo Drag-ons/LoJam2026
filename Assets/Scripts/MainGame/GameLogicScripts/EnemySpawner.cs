@@ -5,25 +5,13 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public bool canSpawn = true;
-    public int spawnCap;
     public int wave = 0;
-    public float timeBetweenWave;
+    public SpawnerStats spawnerStats;
     public GameObject snakePrefab;
     public EnemyStats snakeStats;
     public GameObject deerPrefab;
     public EnemyStats deerStats;
-    public float cullRange;
-    public float cullRangeCooldownTime;
     public List<GameObject> spawnedEnemies = new();
-    public List<WaveEvents> waveEvents = new();
-
-    [System.Serializable]
-    public class WaveEvents
-    {
-        public int waveTrigger;
-        public int spawnSnakeAmount;
-        public int spawnDeerAmount;
-    }
 
     private GameObject player;
     private PlayerMovement playerMovement;
@@ -39,11 +27,11 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (canSpawn && spawnedEnemies.Count < spawnCap
+        if (canSpawn && spawnedEnemies.Count < spawnerStats.spawnCap
             && !playerResource.isDead && !playerMovement.nukeCooldown)
         {
             canSpawn = false;
-            foreach (WaveEvents waveEvent in waveEvents)
+            foreach (SpawnerStats.WaveEvents waveEvent in spawnerStats.waveEvents)
             {
                 if (waveEvent.waveTrigger <= wave)
                 {
@@ -95,14 +83,14 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator WaveCooldown()
     {
-        yield return new WaitForSeconds(timeBetweenWave);
+        yield return new WaitForSeconds(spawnerStats.timeBetweenWave);
         canSpawn = true;
         wave++;
     }
 
     IEnumerator CullCooldownRoutine()
     {
-        yield return new WaitForSeconds(cullRangeCooldownTime);
+        yield return new WaitForSeconds(spawnerStats.cullRangeCooldownTime);
         canCull = true;
     }
 
@@ -111,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
         List<GameObject> enemiesToDespawn = new List<GameObject>();
         foreach (GameObject enemy in spawnedEnemies)
         {
-            if (Vector2.Distance(player.transform.position, enemy.transform.position) > cullRange)
+            if (Vector2.Distance(player.transform.position, enemy.transform.position) > spawnerStats.cullRange)
             {
                 enemiesToDespawn.Add(enemy);
             }
