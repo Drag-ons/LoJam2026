@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.VFX;
 public class PlayerMovement : MonoBehaviour
 {
     public float lastXVelocity;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerResourceController resourceController;
     private FilterControl filterControl;
     public Dashani dash;
+    public GameObject blast;
 
     private void Start()
     {
@@ -78,10 +79,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (lastLinearVelocity.x > 0)
             {
+                blast.transform.localRotation = Quaternion.Euler(0,0,90);
                 return transform.right;
             }
             else
             {
+                blast.transform.localRotation = Quaternion.Euler(0,0,270);
                 return -transform.right;
             }
         }
@@ -89,10 +92,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (lastLinearVelocity.y > 0)
             {
+                blast.transform.localRotation = Quaternion.Euler(0,0,180);
                 return transform.up;
             }
             else
             {
+                blast.transform.localRotation = Quaternion.Euler(0,0,0);
                 return -transform.up;
             }
         }
@@ -163,7 +168,8 @@ public class PlayerMovement : MonoBehaviour
 
             List<IEnemy> enemiesInCone = new List<IEnemy>();
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.pushingRange);
-
+            GetLastPlayerDirection();
+            blast.GetComponent<VisualEffect>().SendEvent("Blast");
             foreach (Collider2D collider in hitColliders)
             {
                 if (collider.gameObject.TryGetComponent(out IEnemy enemy))

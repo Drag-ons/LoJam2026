@@ -1656,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!73398921 &705688461
 VFXRenderer:
   serializedVersion: 1
@@ -1665,7 +1665,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705688460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1750,12 +1750,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705688460}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14, y: -0.12, z: 0}
-  m_LocalScale: {x: 1, y: 3.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2068199341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787822038
 GameObject:
@@ -3712,6 +3712,7 @@ MonoBehaviour:
   isShaking: 0
   playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}
   dash: {fileID: 487653846}
+  blast: {fileID: 705688460}
 --- !u!212 &2068199340
 SpriteRenderer:
   serializedVersion: 2
@@ -3786,6 +3787,7 @@ Transform:
   m_Children:
   - {fileID: 119063175}
   - {fileID: 282651877}
+  - {fileID: 705688463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2068199342
@@ -4248,4 +4250,3 @@ SceneRoots:
   - {fileID: 275988246}
   - {fileID: 1615003631}
   - {fileID: 1022409192}
-  - {fileID: 705688463}
