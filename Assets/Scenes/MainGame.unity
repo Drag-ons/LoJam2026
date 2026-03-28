@@ -2406,6 +2406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FilterControl
   filter: {fileID: 2100000, guid: 594a536c0f368474fb379763945882c1, type: 2}
+  damage: {fileID: 2100000, guid: b8efcae43d134dd4bb224d98e67f2d4f, type: 2}
   active: 0
   death: 0
   nukelength: 2

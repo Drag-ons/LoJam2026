@@ -4,6 +4,7 @@ using UnityEngine;
 public class FilterControl : MonoBehaviour
 {
     public Material filter;
+    public Material damage;
     public bool active;
     public bool death;
     public float nukelength;
@@ -30,6 +31,7 @@ public class FilterControl : MonoBehaviour
         {
             if(filter.GetFloat("_Intensity") <= 5)
             {
+                damage.SetFloat("_DMG",0);
                 filter.SetFloat("_Intensity", Mathf.Clamp(filter.GetFloat("_Intensity") + 0.1f, 0f, 10f));
                 filter.SetFloat("_Active", Mathf.Clamp(filter.GetFloat("_Active") - .13f, 0f, 10f));
             }
@@ -41,6 +43,7 @@ public class FilterControl : MonoBehaviour
             //filter.SetFloat("_Active", 0.5f)
             if (filter.GetFloat("_Intensity") <= 3)
             {
+                damage.SetFloat("_DMG",0);
                 filter.SetFloat("_Intensity", Mathf.Clamp(filter.GetFloat("_Intensity") + 0.1f, 0f, 10f));
                 filter.SetFloat("_Active", Mathf.Clamp(filter.GetFloat("_Active") - .13f, 0f, 10f));
             }
