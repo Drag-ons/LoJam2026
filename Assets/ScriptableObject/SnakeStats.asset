@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7adeaad20c306947bbc147c91a63454, type: 3}
   m_Name: SnakeStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  minimumSpeed: 1
-  maximumSpeed: 5
-  damage: 0.1
+  minimumSpeed: 0.2
+  maximumSpeed: 1.5
+  damage: 0.2
   abilityGain: 1
   weight: 0.05
-  minimumSpawnRangeX: 0.5
-  maximumSpawnRangeX: 5
-  minimumSpawnRangeY: 0.3
-  maximumSpawnRangeY: 3
+  minimumSpawnRangeX: 0.2
+  maximumSpawnRangeX: 4
+  minimumSpawnRangeY: 0.2
+  maximumSpawnRangeY: 2
