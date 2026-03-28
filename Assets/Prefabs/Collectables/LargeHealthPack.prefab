@@ -151,4 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01743415c90feb8479caa1d0130e8780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickupController
-  healingPower: 50
+  healingPower: 20
