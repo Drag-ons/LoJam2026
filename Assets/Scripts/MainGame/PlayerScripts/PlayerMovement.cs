@@ -173,12 +173,12 @@ public class PlayerMovement : MonoBehaviour
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, playerStats.pushingRange);
             GetLastPlayerDirection();
             blast.GetComponent<VisualEffect>().SendEvent("Blast");
+            AudioManager.Instance.Play(AudioManager.SoundType.Shockwave);
             foreach (Collider2D collider in hitColliders)
-             AudioManager.Instance.Play(AudioManager.SoundType.Shockwave);
             {
-                if (GetComponent<Collider>().gameObject.TryGetComponent(out IEnemy enemy))
+                if (collider.gameObject.TryGetComponent(out IEnemy enemy))
                 {
-                    Vector2 directionToTarget = (GetComponent<Collider>().gameObject.transform.position - transform.position).normalized;
+                    Vector2 directionToTarget = (collider.gameObject.transform.position - transform.position).normalized;
                     float angle = Vector2.Angle(GetLastPlayerDirection(), directionToTarget);
                     if (angle < playerStats.pushingAngle / 2f)
                     {
