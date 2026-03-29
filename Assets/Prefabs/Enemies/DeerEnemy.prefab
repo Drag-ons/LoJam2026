@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1966718230342128396}
   - component: {fileID: 8464913430232868148}
   - component: {fileID: 2305923626103542578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DeerEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -219,12 +219,15 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}
   enemyStats: {fileID: 11400000, guid: 8d2b74b83c3f07d4aa5e794476d65040, type: 2}
   lastXVelocity: 0
+  lastYVelocity: 0
   canMove: 0
   isFleeing: 0
   canDamage: 0
   beingPushed: 0
   finishedSpawning: 0
   spottedByPlayer: 0
+  verticalMovement: 0
+  isVisible: 0
   distanceFromPlayer: 0
   spottedDelay: 1
   player: {fileID: 0}

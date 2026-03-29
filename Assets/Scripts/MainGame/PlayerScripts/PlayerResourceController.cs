@@ -17,6 +17,7 @@ public class PlayerResourceController : MonoBehaviour
     public Slider ability2BarSlider;
     public Slider ability3BarSlider;
     public Material damage;
+    public LayerMask mask;
     private bool hit;
 
     private float orbUiIncrements;
@@ -57,7 +58,13 @@ public class PlayerResourceController : MonoBehaviour
         sanity = Mathf.Clamp(sanity - dmg, 0, playerStats.maxSanity);
         sanityBarSlider.value = sanity;
         damage.SetFloat("_DMG",1);
+        if(hit == false)
+        {
+            AudioManager.Instance.Play(AudioManager.SoundType.Player_Hit);
+        }
+    
         hit = true;
+         
         StartCoroutine(Damagecheck());
         if (sanity <= 0)
         {
@@ -140,9 +147,13 @@ public class PlayerResourceController : MonoBehaviour
     {
         while(hit == true)
         {
+            
             yield return new WaitForSeconds(2);
-            damage.SetFloat("_DMG",0);
-            hit = false;
+            if(Physics2D.OverlapCircle(this.transform.position, 1, mask) == false){
+                damage.SetFloat("_DMG",0);
+                hit = false;
+            }
+            
         }
     }
 }

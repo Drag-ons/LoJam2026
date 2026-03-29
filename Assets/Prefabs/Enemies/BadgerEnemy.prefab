@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 5137308891688243852}
   - component: {fileID: 6818520741746387593}
   - component: {fileID: 946777680233975442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BadgerEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -949,6 +949,75 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &442267298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442267300}
+  - component: {fileID: 442267299}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &442267299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442267298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc3a1bfc8d56ee45bfad7293a51b86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  AllSounds:
+  - Type: 0
+    Clip: {fileID: 8300000, guid: 800008c23a1106745b9f7b23a3d7e35a, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 1
+    Clip: {fileID: 8300000, guid: 5db53c5e9d326474bac0f15c1c082e13, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 2
+    Clip: {fileID: 8300000, guid: 34d7d08559797f348aa81cfca681e969, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 3
+    Clip: {fileID: 8300000, guid: dbeb78807fda02441a96160d15d41db0, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: e46c5a535a2429f4a9e76f499d0ab1e6, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 5
+    Clip: {fileID: 8300000, guid: 3df8bf9fc8b3d9d499b514dc4c37124f, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+--- !u!4 &442267300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442267298}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.10187, y: 5.7739, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487653844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,6 +4095,9 @@ MonoBehaviour:
   ability2BarSlider: {fileID: 645682922}
   ability3BarSlider: {fileID: 58202813}
   damage: {fileID: 2100000, guid: b8efcae43d134dd4bb224d98e67f2d4f, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!61 &2068199345
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4251,3 +4323,4 @@ SceneRoots:
   - {fileID: 275988246}
   - {fileID: 1615003631}
   - {fileID: 1022409192}
+  - {fileID: 442267300}

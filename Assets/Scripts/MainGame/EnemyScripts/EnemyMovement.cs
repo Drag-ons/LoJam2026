@@ -52,6 +52,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
             resourceController.AddAbilityResource(enemyStats.abilityGain);
             deathvfx.deathevent(this.transform.position);
             enemySpawner.RemoveEnemyFromSpawnedList(gameObject);
+             AudioManager.Instance.Play(AudioManager.SoundType.Animal_Death);
             Destroy(gameObject);
         }
 
