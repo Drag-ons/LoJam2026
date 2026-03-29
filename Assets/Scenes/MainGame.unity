@@ -1941,6 +1941,10 @@ MonoBehaviour:
   snakeStats: {fileID: 11400000, guid: 385478519eb7f0546b044ac2d75c2c01, type: 2}
   deerPrefab: {fileID: 5978028102599777083, guid: f785fe8a056088943bf9b94e7163e6f2, type: 3}
   deerStats: {fileID: 11400000, guid: 8d2b74b83c3f07d4aa5e794476d65040, type: 2}
+  hawkTuahPrefab: {fileID: 3580809450854791977, guid: 1897e531c979160458cc801dafa56a29, type: 3}
+  hawkTuahStats: {fileID: 11400000, guid: 6f026fd41834f374e8746b33a6d357d5, type: 2}
+  badgerPrefab: {fileID: 3609757309460414672, guid: 7438c9cff13a3ca42b5394ebdbc2ebef, type: 3}
+  badgerTuahStats: {fileID: 11400000, guid: 157fc380763d4cb48b0467dd8d40c8fb, type: 2}
   spawnedEnemies: []
 --- !u!4 &921480840
 Transform:

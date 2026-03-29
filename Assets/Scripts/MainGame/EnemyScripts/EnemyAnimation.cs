@@ -11,7 +11,15 @@ public class EnemyAnimation : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         enemyMovement = GetComponent<EnemyMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.flipX = player.transform.InverseTransformPoint(gameObject.transform.position).x < 0;
+
+        if (enemyMovement.verticalMovement)
+        {
+            spriteRenderer.flipY = player.transform.InverseTransformPoint(gameObject.transform.position).y < 0;
+        }
+        else
+        {
+            spriteRenderer.flipX = player.transform.InverseTransformPoint(gameObject.transform.position).x < 0;
+        }
     }
 
     public void OnSpawnEnd()
@@ -21,11 +29,23 @@ public class EnemyAnimation : MonoBehaviour
         enemyMovement.finishedSpawning = true;
     }
 
+    public void flipAssetX(bool flipX)
+    {
+        spriteRenderer.flipX = flipX;
+    }
+
     void Update()
     {
         if (enemyMovement.canMove)
         {
-            spriteRenderer.flipX = enemyMovement.lastXVelocity > 0;
+            if (enemyMovement.verticalMovement)
+            {
+                spriteRenderer.flipY = enemyMovement.lastYVelocity > 0;
+            }
+            else
+            {
+                spriteRenderer.flipX = enemyMovement.lastXVelocity > 0;
+            }
         }
     }
 }

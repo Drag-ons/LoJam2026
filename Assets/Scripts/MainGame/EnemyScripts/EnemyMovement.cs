@@ -6,27 +6,30 @@ public class EnemyMovement : MonoBehaviour, IEnemy
     public PlayerStats playerStats;
     public EnemyStats enemyStats;
     public float lastXVelocity;
+    public float lastYVelocity;
     public bool canMove = false;
     public bool isFleeing = false;
     public bool canDamage = false;
     public bool beingPushed = false;
     public bool finishedSpawning = false;
+    public bool spottedByPlayer = false;
+    public bool verticalMovement;
+    public bool isVisible;
     public float distanceFromPlayer;
+    public float spottedDelay;
     public GameObject player;
     public Rigidbody2D rigidBody;
     public Deathaim deathvfx;
     public IEnemyMovement enemyMovementInterface;
     public EnemySpawner enemySpawner;
-    
 
-    private Camera playerCamera;
-    private bool spottedByPlayer = false;
+    private Camera mainCamera;
     private PlayerResourceController resourceController;
     private PlayerMovement playerMovement;
 
     private void Start()
     {
-        playerCamera = Camera.main;
+        mainCamera = Camera.main;
         rigidBody = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         resourceController = player.GetComponent<PlayerResourceController>();
@@ -36,14 +39,15 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         enemySpawner = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 viewPos = playerCamera.WorldToViewportPoint(transform.position);
-        if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0 && canMove)
+        Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
+        isVisible = viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1;
+        if (isVisible && canMove)
         {
-            spottedByPlayer = true;
+            StartCoroutine(SpottedDelay());
         }
-        else if (spottedByPlayer)
+        else if (spottedByPlayer && !isVisible)
         {
             resourceController.AddAbilityResource(enemyStats.abilityGain);
             deathvfx.deathevent(this.transform.position);
@@ -59,10 +63,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         {
             isFleeing = false;
         }
-    }
 
-    void FixedUpdate()
-    {
         enemyMovementInterface.Move();
 
         if (rigidBody.linearVelocity.x != 0)
@@ -70,10 +71,21 @@ public class EnemyMovement : MonoBehaviour, IEnemy
             lastXVelocity = rigidBody.linearVelocity.x;
         }
 
+        if (rigidBody.linearVelocity.y != 0)
+        {
+            lastYVelocity = rigidBody.linearVelocity.y;
+        }
+
         if (beingPushed && finishedSpawning)
         {
             rigidBody.AddForce((transform.position - player.transform.position).normalized * (playerStats.pushingPower / enemyStats.weight));
         }
+    }
+
+    private IEnumerator SpottedDelay()
+    {
+        yield return new WaitForSeconds(spottedDelay);
+        spottedByPlayer = true;
     }
 
     public void DamagePlayer(PlayerResourceController playerResourceController)
