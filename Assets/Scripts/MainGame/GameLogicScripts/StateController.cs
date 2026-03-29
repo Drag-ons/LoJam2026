@@ -22,6 +22,7 @@ public class StateController : MonoBehaviour
 
     void Start()
     {
+        AudioManager.Instance.ChangeMusic(AudioManager.SoundType.MusicTheme);
         currentScene = SceneManager.GetActiveScene().name;
         Time.timeScale = 1;
         playerMovement = player.GetComponent<PlayerMovement>();

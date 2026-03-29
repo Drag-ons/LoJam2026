@@ -22,23 +22,28 @@ MonoBehaviour:
     spawnDeerAmount: 0
     spawnHawkTuahAmount: 0
     spawnBadgerAmount: 0
-  - waveTrigger: 3
+  - waveTrigger: 5
     spawnSnakeAmount: 1
     spawnDeerAmount: 0
     spawnHawkTuahAmount: 0
     spawnBadgerAmount: 0
-  - waveTrigger: 5
+  - waveTrigger: 10
     spawnSnakeAmount: 1
     spawnDeerAmount: 1
     spawnHawkTuahAmount: 0
     spawnBadgerAmount: 1
-  - waveTrigger: 8
+  - waveTrigger: 15
+    spawnSnakeAmount: 1
+    spawnDeerAmount: 0
+    spawnHawkTuahAmount: 4
+    spawnBadgerAmount: 0
+  - waveTrigger: 20
     spawnSnakeAmount: 1
     spawnDeerAmount: 1
-    spawnHawkTuahAmount: 1
+    spawnHawkTuahAmount: 4
     spawnBadgerAmount: 1
-  - waveTrigger: 10
+  - waveTrigger: 20
     spawnSnakeAmount: 1
     spawnDeerAmount: 1
-    spawnHawkTuahAmount: 1
+    spawnHawkTuahAmount: 4
     spawnBadgerAmount: 1

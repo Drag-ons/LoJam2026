@@ -15,14 +15,14 @@ MonoBehaviour:
   godMode: 0
   maxSanity: 100
   maxStamina: 100
-  staminaRecoveryRate: 0.01
+  staminaRecoveryRate: 0.02
   startingAbilityPower: 0
   maxAbilityPower: 30
   movementSpeed: 2
   dashingPower: 5
   dashingTime: 0.5
   dashingCooldown: 0.5
-  dashingCost: 10
+  dashingCost: 25
   chopOrbCost: 1
   chopRange: 1
   pushingPower: 25
