@@ -1,7 +1,5 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -10,6 +8,11 @@ public class Menu : MonoBehaviour
     public GameObject controlsBack;
     public GameObject controlsText1;
     public GameObject controlsText2;
+
+    private void Start()
+    {
+        AudioManager.Instance.ChangeMusic(AudioManager.SoundType.MusicTheme);
+    }
 
     public void PlayGame()
     {

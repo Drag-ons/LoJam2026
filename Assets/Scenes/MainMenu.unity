@@ -1209,7 +1209,7 @@ MonoBehaviour:
     Ira''s third-eye has granted
     him three ability orbs that are charged with each death of a shadow beast.
 
-    
+
 
 '
   m_isRightToLeft: 0
@@ -1301,6 +1301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 899250171}
   - component: {fileID: 899250170}
+  - component: {fileID: 899250172}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -1340,6 +1341,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899250172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899250169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc3a1bfc8d56ee45bfad7293a51b86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  animalDeathCooldown: 2
+  animalDeathOnCooldown: 0
+  stateController: {fileID: 0}
+  AllSounds:
+  - Type: 6
+    Clip: {fileID: 8300000, guid: 518f27f04fcc24b438ec982687ec69c7, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
 --- !u!1 &919031410
 GameObject:
   m_ObjectHideFlags: 0

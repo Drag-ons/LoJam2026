@@ -1,8 +1,13 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public float animalDeathCooldown = 2f;
+    public bool animalDeathOnCooldown = false;
+    public StateController stateController;
+
     public enum SoundType
     {
         Dash,
@@ -11,6 +16,7 @@ public class AudioManager : MonoBehaviour
         Axe,
         Animal_Death,
         Player_Hit,
+        MusicTheme
         // Add more sound types as needed
     }
 
@@ -76,6 +82,22 @@ public class AudioManager : MonoBehaviour
         Destroy(soundObj, s.Clip.length);
     }
 
+    public void AnimalDeath()
+    {
+        if (!animalDeathOnCooldown)
+        {
+            Play(SoundType.Animal_Death);
+            StartCoroutine("AnimalDeathCoroutine");
+        }
+    }
+
+    private IEnumerator AnimalDeathCoroutine()
+    {
+        animalDeathOnCooldown = true;
+        yield return new WaitForSeconds(animalDeathCooldown);
+        animalDeathOnCooldown = false;
+    }
+
     //Call this method to change music tracks
     public void ChangeMusic(SoundType type)
     {
@@ -92,6 +114,7 @@ public class AudioManager : MonoBehaviour
             _musicSource.loop = true;
         }
 
+        _musicSource.volume = track.Volume;
         _musicSource.clip = track.Clip;
         _musicSource.Play();
     }
