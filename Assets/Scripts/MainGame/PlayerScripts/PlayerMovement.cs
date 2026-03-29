@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float shakeSpeed;
     public bool isShaking = false;
     public PlayerStats playerStats;
+    //public AudioManager manager;
 
     private Rigidbody2D rigidBody;
     private float activeMoveSpeed;
@@ -107,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isMoving && canDash && resourceController.stamina > playerStats.dashingCost)
         {
+            AudioManager.Instance.Play(AudioManager.SoundType.Dash);
             resourceController.RemoveStamina(playerStats.dashingCost);
             StartCoroutine(DashMove());
         }
@@ -147,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
             if (collider.gameObject.TryGetComponent(out chopableController))
             {
                 chopableController.Chop();
+                 AudioManager.Instance.Play(AudioManager.SoundType.Axe);
                 return true;
             }
         }
@@ -171,10 +174,11 @@ public class PlayerMovement : MonoBehaviour
             GetLastPlayerDirection();
             blast.GetComponent<VisualEffect>().SendEvent("Blast");
             foreach (Collider2D collider in hitColliders)
+             AudioManager.Instance.Play(AudioManager.SoundType.Shockwave);
             {
-                if (collider.gameObject.TryGetComponent(out IEnemy enemy))
+                if (GetComponent<Collider>().gameObject.TryGetComponent(out IEnemy enemy))
                 {
-                    Vector2 directionToTarget = (collider.gameObject.transform.position - transform.position).normalized;
+                    Vector2 directionToTarget = (GetComponent<Collider>().gameObject.transform.position - transform.position).normalized;
                     float angle = Vector2.Angle(GetLastPlayerDirection(), directionToTarget);
                     if (angle < playerStats.pushingAngle / 2f)
                     {
@@ -197,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (resourceController.CanUseAbility(playerStats.nukeOrbCost))
         {
+             AudioManager.Instance.Play(AudioManager.SoundType.Nuke);
             resourceController.RemoveAbilityOrbs(playerStats.nukeOrbCost);
             StartCoroutine(NukeAction());
         }

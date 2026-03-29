@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9034996962703706333}
   - component: {fileID: 4976931847441270994}
   - component: {fileID: 9050746848467695650}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SnakeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -180,12 +180,15 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 2e749be92ea3e8b45bff6b35a28cace6, type: 2}
   enemyStats: {fileID: 11400000, guid: 385478519eb7f0546b044ac2d75c2c01, type: 2}
   lastXVelocity: 0
+  lastYVelocity: 0
   canMove: 0
   isFleeing: 0
   canDamage: 0
   beingPushed: 0
   finishedSpawning: 0
   spottedByPlayer: 0
+  verticalMovement: 0
+  isVisible: 0
   distanceFromPlayer: 0
   spottedDelay: 1
   player: {fileID: 0}

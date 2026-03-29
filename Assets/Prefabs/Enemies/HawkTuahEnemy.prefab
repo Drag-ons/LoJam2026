@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5936277252749632701}
   - component: {fileID: 6370694353258793222}
   - component: {fileID: 1660377651256749245}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HawkTuahEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
