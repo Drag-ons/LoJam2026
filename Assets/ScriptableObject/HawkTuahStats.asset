@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7adeaad20c306947bbc147c91a63454, type: 3}
   m_Name: HawkTuahStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  minimumSpeed: 10
-  maximumSpeed: 15
+  minimumSpeed: 5
+  maximumSpeed: 5
   damage: 2
   abilityGain: 1
   weight: 0.05
